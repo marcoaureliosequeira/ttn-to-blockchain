@@ -1,0 +1,45 @@
+{
+  "name": "ttn_app_server",
+  "version": "1.0.0",
+  "description": "Retrieve sensor data from The Things Network and store it in a database",
+  "main": "truffle-config.js",
+  "scripts": {
+    "dev": "lite-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robertlie/ttn_app_server.git"
+  },
+  "author": "Robert Lie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/robertlie/ttn_app_server/issues"
+  },
+  "homepage": "https://github.com/robertlie/ttn_app_server#readme",
+  "dependencies": {
+    "@types/jquery": "^3.3.31",
+    "async-waterfall": "^0.1.5",
+    "ganache-cli": "^6.6.0",
+    "jquery": "^3.4.1",
+    "jsdom": "^15.1.1",
+    "mocha": "^6.2.0",
+    "moment": "^2.23.0",
+    "mysql": "^2.16.0",
+    "ttn": "^2.3.1",
+    "web3": "^0.20.1"
+  },
+  "devDependencies": {
+    "bootstrap": "^4.3.1",
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "chai-bignumber": "^2.0.2",
+    "lite-server": "^2.3.0",
+    "nodemon": "^1.17.3",
+    "truffle": "5.0.2",
+    "truffle-contract": "^4.0.28"
+  },
+  "directories": {
+    "test": "test"
+  }
+}
