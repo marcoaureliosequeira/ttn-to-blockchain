@@ -18,7 +18,7 @@ const hostProvider = config.blockchainOptions.host;
 
 var contracts = {};
 
-var todoListContract = null;
+var sensorDataContract = null;
 
 var Web3 = require('web3');
 
@@ -33,10 +33,10 @@ var firstAccount;
 
 /*****************/
 
-var TodoListAbi = require(__dirname+"/build/contracts/TodoList");
-var todoListAddress = null;
-var todoListDeployed = null;
-var todoListContractAddress;
+var sensorDataAbi = require(__dirname+"/build/contracts/SensorData");
+var sensorDataAddress = null;
+var sensorDataDeployed = null;
+var sensorDataContractAddress;
 
 
 initweb3().then (function (result) {
@@ -88,8 +88,8 @@ async function initweb3() {
 async function setContracts () {
     console.log("start setContracts");
 
-    todoListContract = TruffleContract(TodoListAbi) //get truffle contract; function from truffle package - node
-    todoListContract.setProvider(web3Provider)
+    sensorDataContract = TruffleContract(sensorDataAbi) //get truffle contract; function from truffle package - node
+    sensorDataContract.setProvider(web3Provider)
 
     firstAccount = web3.eth.accounts[0];
 
@@ -101,8 +101,8 @@ async function setContracts () {
 async function getInformationFromBlockchain() {
     console.log("---getInformationFromBlockchain---");
 
-    todoListContract.deployed().then(function(instance){
-        return instance.taskCount();
+    sensorDataContract.deployed().then(function(instance){
+        return instance.dataId();
     }).then(function(result) {
         console.log("getInformationFromBlockchain = ", result.toString());
     }, function (error) {
@@ -113,34 +113,32 @@ async function getInformationFromBlockchain() {
 
 function setInformationInBlockchain () {
     console.log("init setInfo")
-    todoListContract.deployed().then(function(instance){
+    sensorDataContract.deployed().then(function(instance){
         return instance.createDataSensor({from: firstAccount});
     }).then(function(result) {
         console.log("setInfoFinish");
     }, function (error) {
-        console.log(error);ß
+        console.log(error);
     });
 }
 
 
 function getDataFromSensorArray () {
-    console.log("---getTaskArray---");
+    console.log("---getDataArray---");
 
-    todoListContract.deployed().then(function(instance){
+    sensorDataContract.deployed().then(function(instance){
         return instance.dataFromSensorArray(1);
     }).then(function(result) {
         console.log("getDataArray = ", result.toString());
     }, function (error) {
         console.log(error);
     });
-
-
 }
 
 ///NOT USED
 function getInfoFromDeployedSmartContract(){
 
-    let todoListPromise;
+    /*let todoListPromise;
     if (todoListAddress !== null){
         console.log("entrei no if!!");
         todoListPromise = todoListContract.at(todoListAddress);
@@ -156,7 +154,7 @@ function getInfoFromDeployedSmartContract(){
          todoListDeployed = todoListContract.at(todoListDep.address);
     }).catch((error) => {
         console.error(error);
-    });
+    });*/
 }
 
 
