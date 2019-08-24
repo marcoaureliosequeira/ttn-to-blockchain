@@ -7,6 +7,7 @@ contract SensorData {
         uint id;
         uint temperature;
         uint humidity;
+        string date;
     }
 
     mapping (uint => dataFromSensor) public dataFromSensorArray; //associative array/hash, where key is a unsigned int and the array's content is a instance of Task
@@ -15,21 +16,22 @@ contract SensorData {
     event dataFromSensorCreated(
         uint id,
         uint temperature,
-        uint humidity
+        uint humidity,
+        string date
     );
 
     constructor() public {
         //createDataSensor();
     }
 
-    function createDataSensor () public {
+    function createDataSensor (uint _temperature, uint _humidity, string memory _date) public {
         //DATA ID
         dataId ++;
 
-        //add a instance of task to task's array
-        dataFromSensorArray[dataId] = dataFromSensor(dataId);
+        //add a instance of dataFromSensor to dataFromSensorArray
+        dataFromSensorArray[dataId] = dataFromSensor(dataId, _temperature, _humidity, _date);
 
-        emit dataFromSensorCreated(dataId);
+        emit dataFromSensorCreated(dataId, _temperature, _humidity, _date);
     }
 
     function getTaskCount() public returns (uint) {

@@ -6,17 +6,10 @@ const { document } = (new JSDOM('')).window;
 global.document = document;
 var $ = require('jquery')(window);
 
-const ttn = require('ttn');
-//const mysql = require('mysql');
 const moment = require('moment');
 const config = require('./config.js');
 
-const appID = config.TTNOptions.appID;
-const accessKey = config.TTNOptions.accessKey;
-
 const hostProvider = config.blockchainOptions.host;
-
-var contracts = {};
 
 var sensorDataContract = null;
 
@@ -34,35 +27,13 @@ var firstAccount;
 /*****************/
 
 var sensorDataAbi = require(__dirname+"/build/contracts/SensorData");
-var sensorDataAddress = null;
-var sensorDataDeployed = null;
-var sensorDataContractAddress;
 
 
 initweb3().then (function (result) {
     setContracts().then(function(result){
-        ttnClient();
+        getInformationFromBlockchain();
     });
 });
-
-
-function ttnClient () {
-    ttn.data(appID, accessKey)
-        .then(function (client) {
-            client.on("uplink", async function (devID, payload) {
-                console.log("Received uplink from", devID);
-
-                //getInformationFromBlockchain();
-                setInformationInBlockchain();
-
-            })
-        })
-        .catch(function (error) {
-            console.error("Error", error)
-            process.exit(1)
-        });
-}
-
 
 
 async function initweb3() {
@@ -100,29 +71,38 @@ async function setContracts () {
 
 async function getInformationFromBlockchain() {
     console.log("---getInformationFromBlockchain---");
+    console.log("\n \n");
 
-    sensorDataContract.deployed().then(function(instance){
-        return instance.dataId();
+    sensorDataContract.deployed().then(async function (instance) {
+        let dataId = await instance.dataId();
+
+
+        console.log("dataId = ", dataId.toNumber());
+        //console.log("dataFromSensorBC = ", dataFromSensorBC);
+
+        // Fetch dataFromSensor on the blockchain
+        for (var i = 1; i <= dataId; i++) {
+            const task = await instance.dataFromSensorArray(i)
+            const dataId = task[0]
+            const temperatureContent = task[1]
+            const humidityContent = task[2]
+            const storeDate = task[3]
+
+            console.log("----------------------------------------");
+            console.log("dataId = " + dataId);
+            console.log("temperatureContent = " + temperatureContent);
+            console.log("humidityContent = " + humidityContent);
+            console.log("storeDate = " + storeDate);
+            console.log("----------------------------------------");
+            console.log("\n \n");
+        }
     }).then(function(result) {
-        console.log("getInformationFromBlockchain = ", result.toString());
+        //console.log("getInformationFromBlockchain = ", result.toString());
+        console.log("---final----")
     }, function (error) {
         console.log(error);
     });
 }
-
-
-function setInformationInBlockchain () {
-    console.log("init setInfo")
-    sensorDataContract.deployed().then(function(instance){
-        let currentDate = moment().toString();
-        return instance.createDataSensor(1, 2, currentDate, {from: firstAccount});
-    }).then(function(result) {
-        console.log("setInfoFinish");
-    }, function (error) {
-        console.log(error);
-    });
-}
-
 
 function getDataFromSensorArray () {
     console.log("---getDataArray---");
@@ -134,28 +114,6 @@ function getDataFromSensorArray () {
     }, function (error) {
         console.log(error);
     });
-}
-
-///NOT USED
-function getInfoFromDeployedSmartContract(){
-
-    /*let todoListPromise;
-    if (todoListAddress !== null){
-        console.log("entrei no if!!");
-        todoListPromise = todoListContract.at(todoListAddress);
-    }else{
-        console.log("entrei no else!!!!");
-        todoListPromise = todoListContract.deployed();
-    }
-
-     todoListPromise.then(async todoListDep=>{
-         console.log("The deployed TodoList contract is at " + todoListDep.address)
-
-         todoListContractAddress = todoListDep.address;
-         todoListDeployed = todoListContract.at(todoListDep.address);
-    }).catch((error) => {
-        console.error(error);
-    });*/
 }
 
 
