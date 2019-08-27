@@ -50,11 +50,18 @@ function ttnClient () {
     ttn.data(appID, accessKey)
         .then(function (client) {
             client.on("uplink", async function (devID, payload) {
-                console.log("Received uplink from", devID);
+                console.log("DevId", devID);
+                console.log("paylodFields.battery = ", payload.payload_fields.battery);
+                console.log("\n\n\n")
+
+                let battery = payload.payload_fields.battery;
+                let sensorEvent = payload.payload_fields.event;
+                let light = payload.payload_fields.light;
+                let temperature = Math.round(payload.payload_fields.temperature);
+                let dataDate = payload.metadata.time;
 
                 //getInformationFromBlockchain();
-                setInformationInBlockchain();
-
+                setInformationInBlockchain(temperature, light, battery, sensorEvent, devID, dataDate);
             })
         })
         .catch(function (error) {
@@ -111,11 +118,11 @@ async function getInformationFromBlockchain() {
 }
 
 
-function setInformationInBlockchain () {
+function setInformationInBlockchain (temperature, light, battery, sensorEvent, devId, dataDate) {
     console.log("init setInfo")
     sensorDataContract.deployed().then(function(instance){
         let currentDate = moment().toString();
-        return instance.createDataSensor(1, 2, currentDate, {from: firstAccount});
+        return instance.createDataSensor(temperature, light, battery, sensorEvent, devId, dataDate, {from: firstAccount});
     }).then(function(result) {
         console.log("setInfoFinish");
     }, function (error) {

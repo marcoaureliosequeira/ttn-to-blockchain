@@ -6,7 +6,10 @@ contract SensorData {
     struct dataFromSensor {
         uint id;
         uint temperature;
-        uint humidity;
+        uint light;
+        uint battery;
+        string sensorEvent;
+        string devId;
         string date;
     }
 
@@ -16,7 +19,10 @@ contract SensorData {
     event dataFromSensorCreated(
         uint id,
         uint temperature,
-        uint humidity,
+        uint light,
+        uint battery,
+        string sensorEvent,
+        string devId,
         string date
     );
 
@@ -24,14 +30,14 @@ contract SensorData {
         //createDataSensor();
     }
 
-    function createDataSensor (uint _temperature, uint _humidity, string memory _date) public {
+    function createDataSensor (uint _temperature, uint _light, uint _battery, string memory _sensorEvent, string memory _devId, string memory _date) public {
         //DATA ID
         dataId ++;
 
         //add a instance of dataFromSensor to dataFromSensorArray
-        dataFromSensorArray[dataId] = dataFromSensor(dataId, _temperature, _humidity, _date);
+        dataFromSensorArray[dataId] = dataFromSensor(dataId, _temperature, _light, _battery, _sensorEvent, _devId, _date);
 
-        emit dataFromSensorCreated(dataId, _temperature, _humidity, _date);
+        emit dataFromSensorCreated(dataId, _temperature, _light, _battery, _sensorEvent, _devId, _date);
     }
 
     function getTaskCount() public returns (uint) {
