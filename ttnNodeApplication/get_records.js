@@ -85,14 +85,20 @@ async function getInformationFromBlockchain() {
             const task = await instance.dataFromSensorArray(i)
             const dataId = task[0]
             const temperatureContent = task[1]
-            const humidityContent = task[2]
-            const storeDate = task[3]
+            const lightContent = task[2]
+            const battery = task[3]
+            const sensorEvent = task[4]
+            const devId = task[5]
+            const date = task[6]
 
             console.log("----------------------------------------");
             console.log("dataId = " + dataId);
-            console.log("temperatureContent = " + temperatureContent);
-            console.log("humidityContent = " + humidityContent);
-            console.log("storeDate = " + storeDate);
+            console.log("temperature = " + temperatureContent);
+            console.log("light = " + lightContent);
+            console.log("battery = " + battery);
+            console.log("sensorEvent = " + sensorEvent);
+            console.log("devId = " + devId);
+            console.log("date = " + date);
             console.log("----------------------------------------");
             console.log("\n \n");
         }

@@ -82,24 +82,24 @@
       "signature": "0xc17a340e"
     }
   ],
-  "bytecode": "0x60806040526000805534801561001457600080fd5b5061002664010000000061002b810204565b610089565b600080546001908101808355604080516020818101835283825292855292825280842092519092559154815190815290517f97806779c4b10fad3b4735eed188da0a1d6406ff0a6fb1f9b62e73df611ed9e5929181900390910190a1565b61021a806100986000396000f3fe6080604052600436106100615763ffffffff7c0100000000000000000000000000000000000000000000000000000000600035041663283f857c8114610066578063607d4c3b1461007d578063b6cb58a5146100b9578063c17a340e146100ce575b600080fd5b34801561007257600080fd5b5061007b6100e3565b005b34801561008957600080fd5b506100a7600480360360208110156100a057600080fd5b5035610141565b60408051918252519081900360200190f35b3480156100c557600080fd5b506100a7610153565b3480156100da57600080fd5b506100a7610159565b600080546001908101808355604080516020818101835283825292855292825280842092519092559154815190815290517f97806779c4b10fad3b4735eed188da0a1d6406ff0a6fb1f9b62e73df611ed9e5929181900390910190a1565b60016020526000908152604090205481565b60005481565b60003073ffffffffffffffffffffffffffffffffffffffff1663b6cb58a56040518163ffffffff167c010000000000000000000000000000000000000000000000000000000002815260040160206040518083038186803b1580156101bd57600080fd5b505afa1580156101d1573d6000803e3d6000fd5b505050506040513d60208110156101e757600080fd5b505190509056fea165627a7a72305820c2005cb1d3cb7d3dad5a0e2c156aa7d296c8fffee5e5e9995ed635dd8ec106310029",
-  "deployedBytecode": "0x6080604052600436106100615763ffffffff7c0100000000000000000000000000000000000000000000000000000000600035041663283f857c8114610066578063607d4c3b1461007d578063b6cb58a5146100b9578063c17a340e146100ce575b600080fd5b34801561007257600080fd5b5061007b6100e3565b005b34801561008957600080fd5b506100a7600480360360208110156100a057600080fd5b5035610141565b60408051918252519081900360200190f35b3480156100c557600080fd5b506100a7610153565b3480156100da57600080fd5b506100a7610159565b600080546001908101808355604080516020818101835283825292855292825280842092519092559154815190815290517f97806779c4b10fad3b4735eed188da0a1d6406ff0a6fb1f9b62e73df611ed9e5929181900390910190a1565b60016020526000908152604090205481565b60005481565b60003073ffffffffffffffffffffffffffffffffffffffff1663b6cb58a56040518163ffffffff167c010000000000000000000000000000000000000000000000000000000002815260040160206040518083038186803b1580156101bd57600080fd5b505afa1580156101d1573d6000803e3d6000fd5b505050506040513d60208110156101e757600080fd5b505190509056fea165627a7a72305820c2005cb1d3cb7d3dad5a0e2c156aa7d296c8fffee5e5e9995ed635dd8ec106310029",
+  "bytecode": "0x60806040526000805534801561001457600080fd5b5061002664010000000061002b810204565b610089565b600080546001908101808355604080516020818101835283825292855292825280842092519092559154815190815290517f97806779c4b10fad3b4735eed188da0a1d6406ff0a6fb1f9b62e73df611ed9e5929181900390910190a1565b61021a806100986000396000f3fe6080604052600436106100615763ffffffff7c0100000000000000000000000000000000000000000000000000000000600035041663283f857c8114610066578063607d4c3b1461007d578063b6cb58a5146100b9578063c17a340e146100ce575b600080fd5b34801561007257600080fd5b5061007b6100e3565b005b34801561008957600080fd5b506100a7600480360360208110156100a057600080fd5b5035610141565b60408051918252519081900360200190f35b3480156100c557600080fd5b506100a7610153565b3480156100da57600080fd5b506100a7610159565b600080546001908101808355604080516020818101835283825292855292825280842092519092559154815190815290517f97806779c4b10fad3b4735eed188da0a1d6406ff0a6fb1f9b62e73df611ed9e5929181900390910190a1565b60016020526000908152604090205481565b60005481565b60003073ffffffffffffffffffffffffffffffffffffffff1663b6cb58a56040518163ffffffff167c010000000000000000000000000000000000000000000000000000000002815260040160206040518083038186803b1580156101bd57600080fd5b505afa1580156101d1573d6000803e3d6000fd5b505050506040513d60208110156101e757600080fd5b505190509056fea165627a7a72305820bc8be422618dd4324f025bf39da0b9825ef9e4a9676ae27d891e51c2376f46fe0029",
+  "deployedBytecode": "0x6080604052600436106100615763ffffffff7c0100000000000000000000000000000000000000000000000000000000600035041663283f857c8114610066578063607d4c3b1461007d578063b6cb58a5146100b9578063c17a340e146100ce575b600080fd5b34801561007257600080fd5b5061007b6100e3565b005b34801561008957600080fd5b506100a7600480360360208110156100a057600080fd5b5035610141565b60408051918252519081900360200190f35b3480156100c557600080fd5b506100a7610153565b3480156100da57600080fd5b506100a7610159565b600080546001908101808355604080516020818101835283825292855292825280842092519092559154815190815290517f97806779c4b10fad3b4735eed188da0a1d6406ff0a6fb1f9b62e73df611ed9e5929181900390910190a1565b60016020526000908152604090205481565b60005481565b60003073ffffffffffffffffffffffffffffffffffffffff1663b6cb58a56040518163ffffffff167c010000000000000000000000000000000000000000000000000000000002815260040160206040518083038186803b1580156101bd57600080fd5b505afa1580156101d1573d6000803e3d6000fd5b505050506040513d60208110156101e757600080fd5b505190509056fea165627a7a72305820bc8be422618dd4324f025bf39da0b9825ef9e4a9676ae27d891e51c2376f46fe0029",
   "sourceMap": "25:792:2:-;;;73:1;49:25;;409:56;8:9:-1;5:2;;;30:1;27;20:12;5:2;-1:-1;440:18:2;:16;;;;:18;:::i;:::-;25:792;;471:251;537:9;:12;;;;;;;;;642:25;;;;;;;;;;;;609:30;;;;;;;;;:58;;;;;705:9;;683:32;;;;;;;;;;;;;;;;;;471:251::o;25:792::-;;;;;;;",
   "deployedSourceMap": "25:792:2:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;471:251;;8:9:-1;5:2;;;30:1;27;20:12;5:2;471:251:2;;;;;;133:59;;8:9:-1;5:2;;;30:1;27;20:12;5:2;133:59:2;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;133:59:2;;;;;;;;;;;;;;;;;;;49:25;;8:9:-1;5:2;;;30:1;27;20:12;5:2;49:25:2;;;;728:86;;8:9:-1;5:2;;;30:1;27;20:12;5:2;728:86:2;;;;471:251;537:9;:12;;;;;;;;;642:25;;;;;;;;;;;;609:30;;;;;;;;;:58;;;;;705:9;;683:32;;;;;;;;;;;;;;;;;;471:251::o;133:59::-;;;;;;;;;;;;;:::o;49:25::-;;;;:::o;728:86::-;768:4;791;:14;;;:16;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;791:16:2;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;791:16:2;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;791:16:2;;-1:-1:-1;728:86:2;:::o",
   "source": "pragma solidity ^0.5.0;\n\ncontract TodoList {\n    uint public taskCount = 0;\n\n    struct dataFromSensor {\n        uint id;\n    }\n\n    mapping (uint => dataFromSensor) public dataFromSensorArray; //associative array/hash, where key is a unsigned int and the array's content is a instance of Task\n\n    event dataFromSensorCreated(\n        uint id\n    );\n\n    //populate tasks when the contract is contructed\n    constructor() public {\n        createDataSensor();\n    }\n\n    function createDataSensor () public {\n        //task's id\n        taskCount ++;\n\n        //add a instance of task to task's array\n        dataFromSensorArray[taskCount] = dataFromSensor(taskCount);\n\n        emit dataFromSensorCreated(taskCount);\n    }\n\n    function getTaskCount() public returns (uint) {\n        return this.taskCount();\n    }\n\n}",
-  "sourcePath": "/Users/marcosequeira/ttn-to-blockchain/contracts/TodoList.sol",
+  "sourcePath": "/Users/marcosequeira/ttn-to-blockchain/ttnNodeApplication/contracts/TodoList.sol",
   "ast": {
-    "absolutePath": "/Users/marcosequeira/ttn-to-blockchain/contracts/TodoList.sol",
+    "absolutePath": "/Users/marcosequeira/ttn-to-blockchain/ttnNodeApplication/contracts/TodoList.sol",
     "exportedSymbols": {
       "TodoList": [
-        159
+        207
       ]
     },
-    "id": 160,
+    "id": 208,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 108,
+        "id": 156,
         "literals": [
           "solidity",
           "^",
@@ -115,19 +115,19 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 159,
+        "id": 207,
         "linearizedBaseContracts": [
-          159
+          207
         ],
         "name": "TodoList",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 111,
+            "id": 159,
             "name": "taskCount",
             "nodeType": "VariableDeclaration",
-            "scope": 159,
+            "scope": 207,
             "src": "49:25:2",
             "stateVariable": true,
             "storageLocation": "default",
@@ -136,7 +136,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 109,
+              "id": 157,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "49:4:2",
@@ -148,7 +148,7 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "30",
-              "id": 110,
+              "id": 158,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
@@ -167,14 +167,14 @@
           },
           {
             "canonicalName": "TodoList.dataFromSensor",
-            "id": 114,
+            "id": 162,
             "members": [
               {
                 "constant": false,
-                "id": 113,
+                "id": 161,
                 "name": "id",
                 "nodeType": "VariableDeclaration",
-                "scope": 114,
+                "scope": 162,
                 "src": "113:7:2",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -183,7 +183,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 112,
+                  "id": 160,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "113:4:2",
@@ -198,27 +198,27 @@
             ],
             "name": "dataFromSensor",
             "nodeType": "StructDefinition",
-            "scope": 159,
+            "scope": 207,
             "src": "81:46:2",
             "visibility": "public"
           },
           {
             "constant": false,
-            "id": 118,
+            "id": 166,
             "name": "dataFromSensorArray",
             "nodeType": "VariableDeclaration",
-            "scope": 159,
+            "scope": 207,
             "src": "133:59:2",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_dataFromSensor_$114_storage_$",
+              "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_dataFromSensor_$162_storage_$",
               "typeString": "mapping(uint256 => struct TodoList.dataFromSensor)"
             },
             "typeName": {
-              "id": 117,
+              "id": 165,
               "keyType": {
-                "id": 115,
+                "id": 163,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "142:4:2",
@@ -230,18 +230,18 @@
               "nodeType": "Mapping",
               "src": "133:32:2",
               "typeDescriptions": {
-                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_dataFromSensor_$114_storage_$",
+                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_dataFromSensor_$162_storage_$",
                 "typeString": "mapping(uint256 => struct TodoList.dataFromSensor)"
               },
               "valueType": {
                 "contractScope": null,
-                "id": 116,
+                "id": 164,
                 "name": "dataFromSensor",
                 "nodeType": "UserDefinedTypeName",
-                "referencedDeclaration": 114,
+                "referencedDeclaration": 162,
                 "src": "150:14:2",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_dataFromSensor_$114_storage_ptr",
+                  "typeIdentifier": "t_struct$_dataFromSensor_$162_storage_ptr",
                   "typeString": "struct TodoList.dataFromSensor"
                 }
               }
@@ -252,20 +252,20 @@
           {
             "anonymous": false,
             "documentation": null,
-            "id": 122,
+            "id": 170,
             "name": "dataFromSensorCreated",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 121,
+              "id": 169,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 120,
+                  "id": 168,
                   "indexed": false,
                   "name": "id",
                   "nodeType": "VariableDeclaration",
-                  "scope": 122,
+                  "scope": 170,
                   "src": "336:7:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -274,7 +274,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 119,
+                    "id": 167,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "336:4:2",
@@ -293,7 +293,7 @@
           },
           {
             "body": {
-              "id": 128,
+              "id": 176,
               "nodeType": "Block",
               "src": "430:35:2",
               "statements": [
@@ -303,18 +303,18 @@
                     "arguments": [],
                     "expression": {
                       "argumentTypes": [],
-                      "id": 125,
+                      "id": 173,
                       "name": "createDataSensor",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 148,
+                      "referencedDeclaration": 196,
                       "src": "440:16:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$__$returns$__$",
                         "typeString": "function ()"
                       }
                     },
-                    "id": 126,
+                    "id": 174,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -328,32 +328,32 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 127,
+                  "id": 175,
                   "nodeType": "ExpressionStatement",
                   "src": "440:18:2"
                 }
               ]
             },
             "documentation": null,
-            "id": 129,
+            "id": 177,
             "implemented": true,
             "kind": "constructor",
             "modifiers": [],
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 123,
+              "id": 171,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "420:2:2"
             },
             "returnParameters": {
-              "id": 124,
+              "id": 172,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "430:0:2"
             },
-            "scope": 159,
+            "scope": 207,
             "src": "409:56:2",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -361,14 +361,14 @@
           },
           {
             "body": {
-              "id": 147,
+              "id": 195,
               "nodeType": "Block",
               "src": "507:215:2",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 133,
+                    "id": 181,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -379,11 +379,11 @@
                     "src": "537:12:2",
                     "subExpression": {
                       "argumentTypes": null,
-                      "id": 132,
+                      "id": 180,
                       "name": "taskCount",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 111,
+                      "referencedDeclaration": 159,
                       "src": "537:9:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -395,14 +395,14 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 134,
+                  "id": 182,
                   "nodeType": "ExpressionStatement",
                   "src": "537:12:2"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 141,
+                    "id": 189,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -411,25 +411,25 @@
                       "argumentTypes": null,
                       "baseExpression": {
                         "argumentTypes": null,
-                        "id": 135,
+                        "id": 183,
                         "name": "dataFromSensorArray",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 118,
+                        "referencedDeclaration": 166,
                         "src": "609:19:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_dataFromSensor_$114_storage_$",
+                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_dataFromSensor_$162_storage_$",
                           "typeString": "mapping(uint256 => struct TodoList.dataFromSensor storage ref)"
                         }
                       },
-                      "id": 137,
+                      "id": 185,
                       "indexExpression": {
                         "argumentTypes": null,
-                        "id": 136,
+                        "id": 184,
                         "name": "taskCount",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 111,
+                        "referencedDeclaration": 159,
                         "src": "629:9:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -443,7 +443,7 @@
                       "nodeType": "IndexAccess",
                       "src": "609:30:2",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_dataFromSensor_$114_storage",
+                        "typeIdentifier": "t_struct$_dataFromSensor_$162_storage",
                         "typeString": "struct TodoList.dataFromSensor storage ref"
                       }
                     },
@@ -454,11 +454,11 @@
                       "arguments": [
                         {
                           "argumentTypes": null,
-                          "id": 139,
+                          "id": 187,
                           "name": "taskCount",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 111,
+                          "referencedDeclaration": 159,
                           "src": "657:9:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -473,18 +473,18 @@
                             "typeString": "uint256"
                           }
                         ],
-                        "id": 138,
+                        "id": 186,
                         "name": "dataFromSensor",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 114,
+                        "referencedDeclaration": 162,
                         "src": "642:14:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_struct$_dataFromSensor_$114_storage_ptr_$",
+                          "typeIdentifier": "t_type$_t_struct$_dataFromSensor_$162_storage_ptr_$",
                           "typeString": "type(struct TodoList.dataFromSensor storage pointer)"
                         }
                       },
-                      "id": 140,
+                      "id": 188,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -494,17 +494,17 @@
                       "nodeType": "FunctionCall",
                       "src": "642:25:2",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_dataFromSensor_$114_memory",
+                        "typeIdentifier": "t_struct$_dataFromSensor_$162_memory",
                         "typeString": "struct TodoList.dataFromSensor memory"
                       }
                     },
                     "src": "609:58:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_dataFromSensor_$114_storage",
+                      "typeIdentifier": "t_struct$_dataFromSensor_$162_storage",
                       "typeString": "struct TodoList.dataFromSensor storage ref"
                     }
                   },
-                  "id": 142,
+                  "id": 190,
                   "nodeType": "ExpressionStatement",
                   "src": "609:58:2"
                 },
@@ -514,11 +514,11 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 144,
+                        "id": 192,
                         "name": "taskCount",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 111,
+                        "referencedDeclaration": 159,
                         "src": "705:9:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -533,18 +533,18 @@
                           "typeString": "uint256"
                         }
                       ],
-                      "id": 143,
+                      "id": 191,
                       "name": "dataFromSensorCreated",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 122,
+                      "referencedDeclaration": 170,
                       "src": "683:21:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_uint256_$returns$__$",
                         "typeString": "function (uint256)"
                       }
                     },
-                    "id": 145,
+                    "id": 193,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -558,32 +558,32 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 146,
+                  "id": 194,
                   "nodeType": "EmitStatement",
                   "src": "678:37:2"
                 }
               ]
             },
             "documentation": null,
-            "id": 148,
+            "id": 196,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "createDataSensor",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 130,
+              "id": 178,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "497:2:2"
             },
             "returnParameters": {
-              "id": 131,
+              "id": 179,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "507:0:2"
             },
-            "scope": 159,
+            "scope": 207,
             "src": "471:251:2",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -591,7 +591,7 @@
           },
           {
             "body": {
-              "id": 157,
+              "id": 205,
               "nodeType": "Block",
               "src": "774:40:2",
               "statements": [
@@ -603,32 +603,32 @@
                       "argumentTypes": [],
                       "expression": {
                         "argumentTypes": null,
-                        "id": 153,
+                        "id": 201,
                         "name": "this",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 191,
+                        "referencedDeclaration": 239,
                         "src": "791:4:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_TodoList_$159",
+                          "typeIdentifier": "t_contract$_TodoList_$207",
                           "typeString": "contract TodoList"
                         }
                       },
-                      "id": 154,
+                      "id": 202,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "taskCount",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 111,
+                      "referencedDeclaration": 159,
                       "src": "791:14:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
                         "typeString": "function () view external returns (uint256)"
                       }
                     },
-                    "id": 155,
+                    "id": 203,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -642,36 +642,36 @@
                       "typeString": "uint256"
                     }
                   },
-                  "functionReturnParameters": 152,
-                  "id": 156,
+                  "functionReturnParameters": 200,
+                  "id": 204,
                   "nodeType": "Return",
                   "src": "784:23:2"
                 }
               ]
             },
             "documentation": null,
-            "id": 158,
+            "id": 206,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "getTaskCount",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 149,
+              "id": 197,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "749:2:2"
             },
             "returnParameters": {
-              "id": 152,
+              "id": 200,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 151,
+                  "id": 199,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 158,
+                  "scope": 206,
                   "src": "768:4:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -680,7 +680,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 150,
+                    "id": 198,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "768:4:2",
@@ -695,31 +695,31 @@
               ],
               "src": "767:6:2"
             },
-            "scope": 159,
+            "scope": 207,
             "src": "728:86:2",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 160,
+        "scope": 208,
         "src": "25:792:2"
       }
     ],
     "src": "0:817:2"
   },
   "legacyAST": {
-    "absolutePath": "/Users/marcosequeira/ttn-to-blockchain/contracts/TodoList.sol",
+    "absolutePath": "/Users/marcosequeira/ttn-to-blockchain/ttnNodeApplication/contracts/TodoList.sol",
     "exportedSymbols": {
       "TodoList": [
-        159
+        207
       ]
     },
-    "id": 160,
+    "id": 208,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 108,
+        "id": 156,
         "literals": [
           "solidity",
           "^",
@@ -735,19 +735,19 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 159,
+        "id": 207,
         "linearizedBaseContracts": [
-          159
+          207
         ],
         "name": "TodoList",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 111,
+            "id": 159,
             "name": "taskCount",
             "nodeType": "VariableDeclaration",
-            "scope": 159,
+            "scope": 207,
             "src": "49:25:2",
             "stateVariable": true,
             "storageLocation": "default",
@@ -756,7 +756,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 109,
+              "id": 157,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "49:4:2",
@@ -768,7 +768,7 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "30",
-              "id": 110,
+              "id": 158,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
@@ -787,14 +787,14 @@
           },
           {
             "canonicalName": "TodoList.dataFromSensor",
-            "id": 114,
+            "id": 162,
             "members": [
               {
                 "constant": false,
-                "id": 113,
+                "id": 161,
                 "name": "id",
                 "nodeType": "VariableDeclaration",
-                "scope": 114,
+                "scope": 162,
                 "src": "113:7:2",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -803,7 +803,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 112,
+                  "id": 160,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "113:4:2",
@@ -818,27 +818,27 @@
             ],
             "name": "dataFromSensor",
             "nodeType": "StructDefinition",
-            "scope": 159,
+            "scope": 207,
             "src": "81:46:2",
             "visibility": "public"
           },
           {
             "constant": false,
-            "id": 118,
+            "id": 166,
             "name": "dataFromSensorArray",
             "nodeType": "VariableDeclaration",
-            "scope": 159,
+            "scope": 207,
             "src": "133:59:2",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_dataFromSensor_$114_storage_$",
+              "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_dataFromSensor_$162_storage_$",
               "typeString": "mapping(uint256 => struct TodoList.dataFromSensor)"
             },
             "typeName": {
-              "id": 117,
+              "id": 165,
               "keyType": {
-                "id": 115,
+                "id": 163,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "142:4:2",
@@ -850,18 +850,18 @@
               "nodeType": "Mapping",
               "src": "133:32:2",
               "typeDescriptions": {
-                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_dataFromSensor_$114_storage_$",
+                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_dataFromSensor_$162_storage_$",
                 "typeString": "mapping(uint256 => struct TodoList.dataFromSensor)"
               },
               "valueType": {
                 "contractScope": null,
-                "id": 116,
+                "id": 164,
                 "name": "dataFromSensor",
                 "nodeType": "UserDefinedTypeName",
-                "referencedDeclaration": 114,
+                "referencedDeclaration": 162,
                 "src": "150:14:2",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_dataFromSensor_$114_storage_ptr",
+                  "typeIdentifier": "t_struct$_dataFromSensor_$162_storage_ptr",
                   "typeString": "struct TodoList.dataFromSensor"
                 }
               }
@@ -872,20 +872,20 @@
           {
             "anonymous": false,
             "documentation": null,
-            "id": 122,
+            "id": 170,
             "name": "dataFromSensorCreated",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 121,
+              "id": 169,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 120,
+                  "id": 168,
                   "indexed": false,
                   "name": "id",
                   "nodeType": "VariableDeclaration",
-                  "scope": 122,
+                  "scope": 170,
                   "src": "336:7:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -894,7 +894,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 119,
+                    "id": 167,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "336:4:2",
@@ -913,7 +913,7 @@
           },
           {
             "body": {
-              "id": 128,
+              "id": 176,
               "nodeType": "Block",
               "src": "430:35:2",
               "statements": [
@@ -923,18 +923,18 @@
                     "arguments": [],
                     "expression": {
                       "argumentTypes": [],
-                      "id": 125,
+                      "id": 173,
                       "name": "createDataSensor",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 148,
+                      "referencedDeclaration": 196,
                       "src": "440:16:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$__$returns$__$",
                         "typeString": "function ()"
                       }
                     },
-                    "id": 126,
+                    "id": 174,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -948,32 +948,32 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 127,
+                  "id": 175,
                   "nodeType": "ExpressionStatement",
                   "src": "440:18:2"
                 }
               ]
             },
             "documentation": null,
-            "id": 129,
+            "id": 177,
             "implemented": true,
             "kind": "constructor",
             "modifiers": [],
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 123,
+              "id": 171,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "420:2:2"
             },
             "returnParameters": {
-              "id": 124,
+              "id": 172,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "430:0:2"
             },
-            "scope": 159,
+            "scope": 207,
             "src": "409:56:2",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -981,14 +981,14 @@
           },
           {
             "body": {
-              "id": 147,
+              "id": 195,
               "nodeType": "Block",
               "src": "507:215:2",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 133,
+                    "id": 181,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -999,11 +999,11 @@
                     "src": "537:12:2",
                     "subExpression": {
                       "argumentTypes": null,
-                      "id": 132,
+                      "id": 180,
                       "name": "taskCount",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 111,
+                      "referencedDeclaration": 159,
                       "src": "537:9:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -1015,14 +1015,14 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 134,
+                  "id": 182,
                   "nodeType": "ExpressionStatement",
                   "src": "537:12:2"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 141,
+                    "id": 189,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1031,25 +1031,25 @@
                       "argumentTypes": null,
                       "baseExpression": {
                         "argumentTypes": null,
-                        "id": 135,
+                        "id": 183,
                         "name": "dataFromSensorArray",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 118,
+                        "referencedDeclaration": 166,
                         "src": "609:19:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_dataFromSensor_$114_storage_$",
+                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_dataFromSensor_$162_storage_$",
                           "typeString": "mapping(uint256 => struct TodoList.dataFromSensor storage ref)"
                         }
                       },
-                      "id": 137,
+                      "id": 185,
                       "indexExpression": {
                         "argumentTypes": null,
-                        "id": 136,
+                        "id": 184,
                         "name": "taskCount",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 111,
+                        "referencedDeclaration": 159,
                         "src": "629:9:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -1063,7 +1063,7 @@
                       "nodeType": "IndexAccess",
                       "src": "609:30:2",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_dataFromSensor_$114_storage",
+                        "typeIdentifier": "t_struct$_dataFromSensor_$162_storage",
                         "typeString": "struct TodoList.dataFromSensor storage ref"
                       }
                     },
@@ -1074,11 +1074,11 @@
                       "arguments": [
                         {
                           "argumentTypes": null,
-                          "id": 139,
+                          "id": 187,
                           "name": "taskCount",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 111,
+                          "referencedDeclaration": 159,
                           "src": "657:9:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -1093,18 +1093,18 @@
                             "typeString": "uint256"
                           }
                         ],
-                        "id": 138,
+                        "id": 186,
                         "name": "dataFromSensor",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 114,
+                        "referencedDeclaration": 162,
                         "src": "642:14:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_struct$_dataFromSensor_$114_storage_ptr_$",
+                          "typeIdentifier": "t_type$_t_struct$_dataFromSensor_$162_storage_ptr_$",
                           "typeString": "type(struct TodoList.dataFromSensor storage pointer)"
                         }
                       },
-                      "id": 140,
+                      "id": 188,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1114,17 +1114,17 @@
                       "nodeType": "FunctionCall",
                       "src": "642:25:2",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_dataFromSensor_$114_memory",
+                        "typeIdentifier": "t_struct$_dataFromSensor_$162_memory",
                         "typeString": "struct TodoList.dataFromSensor memory"
                       }
                     },
                     "src": "609:58:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_dataFromSensor_$114_storage",
+                      "typeIdentifier": "t_struct$_dataFromSensor_$162_storage",
                       "typeString": "struct TodoList.dataFromSensor storage ref"
                     }
                   },
-                  "id": 142,
+                  "id": 190,
                   "nodeType": "ExpressionStatement",
                   "src": "609:58:2"
                 },
@@ -1134,11 +1134,11 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 144,
+                        "id": 192,
                         "name": "taskCount",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 111,
+                        "referencedDeclaration": 159,
                         "src": "705:9:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -1153,18 +1153,18 @@
                           "typeString": "uint256"
                         }
                       ],
-                      "id": 143,
+                      "id": 191,
                       "name": "dataFromSensorCreated",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 122,
+                      "referencedDeclaration": 170,
                       "src": "683:21:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_uint256_$returns$__$",
                         "typeString": "function (uint256)"
                       }
                     },
-                    "id": 145,
+                    "id": 193,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1178,32 +1178,32 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 146,
+                  "id": 194,
                   "nodeType": "EmitStatement",
                   "src": "678:37:2"
                 }
               ]
             },
             "documentation": null,
-            "id": 148,
+            "id": 196,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "createDataSensor",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 130,
+              "id": 178,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "497:2:2"
             },
             "returnParameters": {
-              "id": 131,
+              "id": 179,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "507:0:2"
             },
-            "scope": 159,
+            "scope": 207,
             "src": "471:251:2",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -1211,7 +1211,7 @@
           },
           {
             "body": {
-              "id": 157,
+              "id": 205,
               "nodeType": "Block",
               "src": "774:40:2",
               "statements": [
@@ -1223,32 +1223,32 @@
                       "argumentTypes": [],
                       "expression": {
                         "argumentTypes": null,
-                        "id": 153,
+                        "id": 201,
                         "name": "this",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 191,
+                        "referencedDeclaration": 239,
                         "src": "791:4:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_TodoList_$159",
+                          "typeIdentifier": "t_contract$_TodoList_$207",
                           "typeString": "contract TodoList"
                         }
                       },
-                      "id": 154,
+                      "id": 202,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "taskCount",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 111,
+                      "referencedDeclaration": 159,
                       "src": "791:14:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
                         "typeString": "function () view external returns (uint256)"
                       }
                     },
-                    "id": 155,
+                    "id": 203,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1262,36 +1262,36 @@
                       "typeString": "uint256"
                     }
                   },
-                  "functionReturnParameters": 152,
-                  "id": 156,
+                  "functionReturnParameters": 200,
+                  "id": 204,
                   "nodeType": "Return",
                   "src": "784:23:2"
                 }
               ]
             },
             "documentation": null,
-            "id": 158,
+            "id": 206,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "getTaskCount",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 149,
+              "id": 197,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "749:2:2"
             },
             "returnParameters": {
-              "id": 152,
+              "id": 200,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 151,
+                  "id": 199,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 158,
+                  "scope": 206,
                   "src": "768:4:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1300,7 +1300,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 150,
+                    "id": 198,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "768:4:2",
@@ -1315,14 +1315,14 @@
               ],
               "src": "767:6:2"
             },
-            "scope": 159,
+            "scope": 207,
             "src": "728:86:2",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 160,
+        "scope": 208,
         "src": "25:792:2"
       }
     ],
@@ -1368,12 +1368,12 @@
         }
       },
       "links": {},
-      "address": "0xEcD5B356bCD3200494b910E68215ed9bE74B929e",
-      "transactionHash": "0x0a802432b71d846b6b48e7ed7ef5c4d66d614e69549512470991a5fd56c4f163"
+      "address": "0x42decA53EBcc8f6adadb2C4c19d5ebC825fE2ce3",
+      "transactionHash": "0x7762899e011b376f94c60476e392a598837ec287423ebba02842e13eb1223824"
     }
   },
   "schemaVersion": "3.0.1",
-  "updatedAt": "2019-08-27T20:33:26.823Z",
+  "updatedAt": "2019-08-31T14:20:54.156Z",
   "devdoc": {
     "methods": {}
   },

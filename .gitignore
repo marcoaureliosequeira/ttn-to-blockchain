@@ -1,4 +1,11 @@
-/node_modules
+/ttnNodeApplication/node_modules
+/webApplication/node_modules
+/ttnNodeApplication/.idea
+/ttnNodeApplication/. vscode
+/ttnNodeApplication/. vagrant
+/webApplication/.idea
+/webApplication/. vscode
+/webApplication/. vagrant
 /.idea
 /.vscode
 /.vagrant

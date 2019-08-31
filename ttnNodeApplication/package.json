@@ -27,6 +27,8 @@
     "moment": "^2.23.0",
     "mysql": "^2.16.0",
     "ttn": "^2.3.1",
+    "vue-tables-2": "^1.4.70",
+    "vuejs-datatable": "^1.7.0",
     "web3": "^0.20.1"
   },
   "devDependencies": {
