@@ -5,7 +5,6 @@
             :columns="columns"
             :options="options">
     </v-client-table>
-    {{this.$store.state.dataFromBlockchain}}
   </div>
 </template>
 
@@ -15,17 +14,21 @@
   export default {
     data() {
       return {
-        columns: ['id', 'name', 'album'],
+        columns: ['id', 'temperature', 'light', 'battery', 'sensorEvent', 'devId', 'date'],
         tableData: []
         ,
         options: {
           headings: {
-            id: 'ID',
-            name: 'Song Name',
-            album: 'Album'
+            id: 'Id',
+            temperature: 'Temperature',
+            light: 'Light',
+            battery: 'Battery',
+            sensorEvent: 'Sensor Event',
+            devId: 'Device Id',
+            date: 'Date',
           },
-          sortable: ['name', 'album'],
-          filterable: ['name', 'album']
+          sortable: ['id', 'temperature', 'light', 'battery', 'sensorEvent', 'devId', 'date'],
+          filterable: ['id', 'temperature', 'light', 'battery', 'sensorEvent', 'devId', 'date'],
         }
       }
     },

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 //import {getTtnInfo} from '../../src/getTtnInfo'
-//const moment = require('moment');
+const moment = require('moment');
 
 const hostProvider = 'http://localhost:7545';
 
@@ -108,13 +108,25 @@ export const store = new Vuex.Store({
           const task = await instance.dataFromSensorArray(i)
           const dataId = task[0]
           const temperatureContent = task[1]
-          //const lightContent = task[2]
-          //const battery = task[3]
-          //const sensorEvent = task[4]
-          //const devId = task[5]
-          const date = task[6]
+          const lightContent = task[2]
+          const battery = task[3]
+          const sensorEvent = task[4]
+          const devId = task[5]
+          const dateFromBlockchain = task[6]
 
-          let auxToReturn = {id: dataId, name: temperatureContent, album:date};
+          var dateUtc = moment.utc(dateFromBlockchain.toString());
+          var localDate = moment(dateUtc).local();
+
+
+          let auxToReturn = {
+            id: dataId.toString(),
+            temperature: temperatureContent.toString(),
+            light: lightContent.toString(),
+            battery: battery.toString(),
+            sensorEvent: sensorEvent.toString(),
+            devId: devId,
+            date: localDate.toString()
+          };
 
           toReturn.push(auxToReturn);
 
