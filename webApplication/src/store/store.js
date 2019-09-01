@@ -18,25 +18,21 @@ var web3Provider = null;
 var firstAccount;
 
 /*****************/
-//const config = require('../../config.js');
+const config = require('../../config.js');
 //const sensorDataLocation = config.blockchainOptions.sensorDataLocation;
 
 //var sensorDataAbi = require("111");
 var sensorDataAbi = require("/Users/marcosequeira/ttn-to-blockchain/ttnNodeApplication/build/contracts/SensorData.json");
+//var sensorDataAbi = require(config.blockchainOptions.sensorDataLocation);
 
 
 Vue.use(Vuex);
 
 export const store = new Vuex.Store({
   state: {
-    flavor: '',
     dataFromBlockchain: [],
-    //testGet: getTtnInfo
   },
   mutations: {
-    change(state, flavor) {
-      state.flavor = flavor
-    },
     setDataFromBlockchain (state, payload) {
       console.log("setDataFromBlockchain = ", payload);
       state.dataFromBlockchain = payload
@@ -44,13 +40,11 @@ export const store = new Vuex.Store({
   },
 
   getters: {
-    flavor: state => state.flavor,
     dataFromBlockchain: state => state.dataFromBlockchain,
   },
 
 
   actions: {
-    //getBlockchainData({ dispatch, commit }, payload) {
     getBlockchainData({ dispatch}) {
       dispatch('initweb3').then (function () {
         dispatch('setContracts').then(function(){
@@ -70,7 +64,7 @@ export const store = new Vuex.Store({
           console.log("inside if");
         } else {
           // create an instance of web3 using the HTTP provider
-          web3 = await new Web3(new Web3.providers.HttpProvider("http://localhost:7545"));
+          web3 = await new Web3(new Web3.providers.HttpProvider(config.blockchainOptions.network));
           console.log("inside else");
         }
       }
@@ -96,10 +90,6 @@ export const store = new Vuex.Store({
 
       sensorDataContract.deployed().then(async function (instance) {
         let dataId = await instance.dataId();
-
-
-        console.log("dataId = ", dataId.toNumber());
-        //console.log("dataFromSensorBC = ", dataFromSensorBC);
 
         var toReturn = [];
 
@@ -129,9 +119,9 @@ export const store = new Vuex.Store({
           };
 
           toReturn.push(auxToReturn);
-
-          console.log("toReturn = ", toReturn);
         }
+
+        console.log("toReturn = ", toReturn)
         commit('setDataFromBlockchain', toReturn);
         return toReturn;
       }).then(function(result) {

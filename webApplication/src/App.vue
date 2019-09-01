@@ -1,35 +1,29 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <Form></Form>
-    <Display></Display>
-  <vue-data-table></vue-data-table>
-  </div>
+  <v-app>
+    <v-app-bar app>
+      <v-toolbar-title class="headline text-uppercase">
+        <span>BLOCKCHAIN</span><v-icon>mdi-leak</v-icon>
+        <span class="font-weight-light">THE THINGS NETWORK</span>
+      </v-toolbar-title>
+      <v-spacer></v-spacer>
+    </v-app-bar>
+
+    <v-content>
+      <vue-data-table></vue-data-table>
+    </v-content>
+  </v-app>
 </template>
 
 <script>
-import Form from './components/Form'
-import Display from './components/Display'
-import VueDataTable from './components/VueDataTable'
-
+import VueDataTable from "./components/VueDataTable";
 
 export default {
-  name: 'app',
+  name: 'App',
   components: {
-    Form,
-    Display,
     VueDataTable
-  }
-}
+  },
+  data: () => ({
+    //
+  }),
+};
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

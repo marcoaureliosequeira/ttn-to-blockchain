@@ -8,6 +8,8 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@mdi/js": "^4.2.95",
+    "@mdi/react": "^1.2.1",
     "@types/jquery": "^3.3.31",
     "async-waterfall": "^0.1.5",
     "core-js": "^2.6.5",
@@ -19,8 +21,10 @@
     "mysql": "^2.16.0",
     "ttn": "^2.3.1",
     "vue": "^2.6.10",
+    "vue-dialog-loading": "^0.2.2",
     "vue-tables-2": "^1.4.70",
     "vuejs-datatable": "^1.7.0",
+    "vuetify": "^2.0.0",
     "vuex": "^3.1.1",
     "web3": "^0.20.1"
   },
@@ -37,9 +41,13 @@
     "eslint-plugin-vue": "^5.0.0",
     "lite-server": "^2.3.0",
     "nodemon": "^1.17.3",
+    "sass": "^1.17.4",
+    "sass-loader": "^7.1.0",
     "truffle": "5.0.2",
     "truffle-contract": "^4.0.28",
-    "vue-template-compiler": "^2.6.10"
+    "vue-cli-plugin-vuetify": "^0.6.3",
+    "vue-template-compiler": "^2.6.10",
+    "vuetify-loader": "^1.2.2"
   },
   "eslintConfig": {
     "root": true,

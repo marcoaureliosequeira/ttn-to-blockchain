@@ -1,5 +1,13 @@
 <template>
   <div class="container">
+    <v-btn
+            color="primary"
+            depressed
+            v-on:click="datableRefresh"
+    >
+      <v-icon>mdi-refresh</v-icon>
+      Refresh
+    </v-btn>
     <v-client-table v-if="this.$store.state.dataFromBlockchain"
             :data="this.$store.state.dataFromBlockchain"
             :columns="columns"
@@ -43,27 +51,13 @@
       }
     },
     mounted() {
-      console.log("entrei!!");
-      console.log(this.$store);
-      //this.$store.dispatch('mainStore/getDataFromBlockchain');
       this.$store.dispatch("getBlockchainData");
-
-
-      //this.getClientPendingPayments();
-
-      console.log("this.tableData = ", this.tableData);
     },
     methods: {
       ...mapActions(['getBlockchainData']),
 
-      async getClientPendingPayments() {
-        await this.$store.dispatch("getBlockchainData").then(response => {
-          console.log("PROMISE FINAL");
-          this.tableData = response;
-          return true;
-        }, error => {
-          console.error("Got nothing from server. Prompt user to check internet connection and try again", error)
-        })
+      datableRefresh() {
+        this.$store.dispatch("getBlockchainData");
       }
     },
   }
