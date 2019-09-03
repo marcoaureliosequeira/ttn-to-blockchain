@@ -31,24 +31,35 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
   state: {
     dataFromBlockchain: [],
+    loading: false,
   },
   mutations: {
     setDataFromBlockchain (state, payload) {
-      console.log("setDataFromBlockchain = ", payload);
       state.dataFromBlockchain = payload
     },
+    setLoading (state, payload) {
+      console.log("set LOADING = ", payload);
+      state.loading = payload
+    }
   },
 
   getters: {
     dataFromBlockchain: state => state.dataFromBlockchain,
+    loading (state) {
+      return state.loading
+    },
   },
 
 
   actions: {
-    getBlockchainData({ dispatch}) {
+    getBlockchainData({ dispatch, commit}) {
+      commit('setLoading', 1);
+
       dispatch('initweb3').then (function () {
         dispatch('setContracts').then(function(){
-          dispatch('getInformationFromBlockchain');
+          dispatch('getInformationFromBlockchain').then(function(){
+            //commit('setLoading', 0);
+          });
         });
       });
     },
@@ -127,6 +138,8 @@ export const store = new Vuex.Store({
       }).then(function(result) {
         //console.log("getInformationFromBlockchain = ", result.toString());
         console.log("---final----")
+        commit('setLoading', 0);
+
         return result;
       }, function (error) {
         console.log(error);

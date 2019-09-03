@@ -10,17 +10,20 @@
 
     <v-content>
       <vue-data-table></vue-data-table>
+      <loading-component></loading-component>
     </v-content>
   </v-app>
 </template>
 
 <script>
 import VueDataTable from "./components/VueDataTable";
+import LoadingComponent from "./components/LoadingComponent";
 
 export default {
   name: 'App',
   components: {
-    VueDataTable
+    VueDataTable,
+    LoadingComponent
   },
   data: () => ({
     //

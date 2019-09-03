@@ -11,7 +11,8 @@
     <v-client-table v-if="this.$store.state.dataFromBlockchain"
             :data="this.$store.state.dataFromBlockchain"
             :columns="columns"
-            :options="options">
+            :options="options"
+    >
     </v-client-table>
   </div>
 </template>
@@ -23,8 +24,8 @@
     data() {
       return {
         columns: ['id', 'temperature', 'light', 'battery', 'sensorEvent', 'devId', 'date'],
-        tableData: []
-        ,
+        tableData: [],
+        loader: '',
         options: {
           headings: {
             id: 'Id',
@@ -42,6 +43,20 @@
     },
     computed: {
       ...mapState('store',['dataFromBlockchain']),
+      loading () {
+        return this.$store.state.loading
+      }
+    },
+    watch: {
+      loading (newValue) {
+        console.log("newValue = ", newValue);
+        if(newValue === 1) {
+          this.$root.$emit('loaderOn')
+        }
+        else {
+          this.$root.$emit('loaderOff')
+        }
+      }
     },
     beforeCreate() {
       const store = this.$store;
