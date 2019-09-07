@@ -143,6 +143,7 @@ export const store = new Vuex.Store({
         return result;
       }, function (error) {
         console.log(error);
+        commit('setLoading', 0);
         return error;
       });
     }

@@ -74,6 +74,7 @@ async function getInformationFromBlockchain() {
     console.log("\n \n");
 
     sensorDataContract.deployed().then(async function (instance) {
+        //GET FIELD DATA ID FROM SMART CONTRACT
         let dataId = await instance.dataId();
 
 
@@ -110,6 +111,7 @@ async function getInformationFromBlockchain() {
     });
 }
 
+//NOT USED
 function getDataFromSensorArray () {
     console.log("---getDataArray---");
 
