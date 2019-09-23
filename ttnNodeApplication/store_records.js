@@ -75,6 +75,8 @@ function ttnClient () {
                 //DATE
                 let dataDate = payload.metadata.time;
 
+                console.log("temperature, light, battery, sensorEvent, devID, dataDate = ", temperature, light, battery, sensorEvent, devID, dataDate);
+
                 //SEND DATA TO BLOCKCHAIN FUNCTION
                 setInformationInBlockchain(temperature, light, battery, sensorEvent, devID, dataDate);
             })

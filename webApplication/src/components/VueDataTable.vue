@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+
     <v-btn
             color="primary"
             depressed
@@ -8,6 +9,17 @@
       <v-icon>mdi-refresh</v-icon>
       Refresh
     </v-btn>
+<br/>
+<br/>
+    <v-btn
+            color="error"
+            depressed
+            v-on:click="datableRefreshError"
+    >
+      <v-icon>mdi-refresh</v-icon>
+      Refresh Error Data
+    </v-btn>
+
     <v-client-table v-if="this.$store.state.dataFromBlockchain"
             :data="this.$store.state.dataFromBlockchain"
             :columns="columns"
@@ -73,6 +85,9 @@
 
       datableRefresh() {
         this.$store.dispatch("getBlockchainData");
+      },
+      datableRefreshError() {
+        this.$store.dispatch("getBlockchainDataError");
       }
     },
   }

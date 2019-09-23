@@ -31,7 +31,8 @@ var sensorDataAbi = require(__dirname+"/build/contracts/SensorData");
 
 initweb3().then (function (result) {
     setContracts().then(function(result){
-        getInformationFromBlockchain();
+        //getInformationFromBlockchain();
+        getInformationErrorFromBlockchain();
     });
 });
 
@@ -94,6 +95,50 @@ async function getInformationFromBlockchain() {
 
             console.log("----------------------------------------");
             console.log("dataId = " + dataId);
+            console.log("temperature = " + temperatureContent);
+            console.log("light = " + lightContent);
+            console.log("battery = " + battery);
+            console.log("sensorEvent = " + sensorEvent);
+            console.log("devId = " + devId);
+            console.log("date = " + date);
+            console.log("----------------------------------------");
+            console.log("\n \n");
+        }
+    }).then(function(result) {
+        //console.log("getInformationFromBlockchain = ", result.toString());
+        console.log("---final----")
+    }, function (error) {
+        console.log(error);
+    });
+}
+
+
+
+async function getInformationErrorFromBlockchain() {
+    console.log("---getInformationErrorFromBlockchain---");
+    console.log("\n \n");
+
+    sensorDataContract.deployed().then(async function (instance) {
+        //GET FIELD DATA ID FROM SMART CONTRACT
+        let dataId = await instance.dataIdError();
+
+
+        console.log("dataId = ", dataId.toNumber());
+        //console.log("dataFromSensorBC = ", dataFromSensorBC);
+
+        // Fetch dataFromSensor on the blockchain
+        for (var i = 1; i <= dataId; i++) {
+            const task = await instance.dataFromSensorErrorArray(i)
+            const dataIdAux = task[0]
+            const temperatureContent = task[1]
+            const lightContent = task[2]
+            const battery = task[3]
+            const sensorEvent = task[4]
+            const devId = task[5]
+            const date = task[6]
+
+            console.log("----------------------------------------");
+            console.log("dataId = " + dataIdAux);
             console.log("temperature = " + temperatureContent);
             console.log("light = " + lightContent);
             console.log("battery = " + battery);

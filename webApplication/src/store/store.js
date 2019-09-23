@@ -64,6 +64,18 @@ export const store = new Vuex.Store({
       });
     },
 
+    getBlockchainDataError({ dispatch, commit}) {
+      commit('setLoading', 1);
+
+      dispatch('initweb3').then (function () {
+        dispatch('setContracts').then(function(){
+          dispatch('getInformationErrorFromBlockchain').then(function(){
+            //commit('setLoading', 0);
+          });
+        });
+      });
+    },
+
     async initweb3() {
       try {
         //To make sure not to overwrite the already set provider when in mist, check first if the web3 is available
@@ -101,12 +113,16 @@ export const store = new Vuex.Store({
 
       sensorDataContract.deployed().then(async function (instance) {
         let dataId = await instance.dataId();
-
+        let dataIdError = await instance.dataIdError();
+console.log("dataIdError = ", dataIdError);
+console.log("dataId = ", dataIdError);
         var toReturn = [];
 
         // Fetch dataFromSensor on the blockchain
         for (var i = 1; i <= dataId; i++) {
+        //for (var i = 1; i <= dataIdError; i++) {
           const task = await instance.dataFromSensorArray(i)
+          //const task = await instance.dataFromSensorErrorArray(i)
           const dataId = task[0]
           const temperatureContent = task[1]
           const lightContent = task[2]
@@ -146,6 +162,62 @@ export const store = new Vuex.Store({
         commit('setLoading', 0);
         return error;
       });
+    },
+
+    async getInformationErrorFromBlockchain({commit}) {
+      console.log("---getInformationFromBlockchain222---");
+      console.log("\n \n");
+
+      sensorDataContract.deployed().then(async function (instance) {
+        let dataId = await instance.dataIdError();
+        let dataIdError = await instance.dataIdError();
+        console.log("dataIdError = ", dataIdError);
+        console.log("dataId = ", dataIdError);
+        var toReturn = [];
+
+        // Fetch dataFromSensor on the blockchain
+        for (var i = 1; i <= dataId; i++) {
+          //for (var i = 1; i <= dataIdError; i++) {
+          const task = await instance.dataFromSensorErrorArray(i)
+          const dataId = task[0]
+          const temperatureContent = task[1]
+          const lightContent = task[2]
+          const battery = task[3]
+          const sensorEvent = task[4]
+          const devId = task[5]
+          const dateFromBlockchain = task[6]
+
+          var dateUtc = moment.utc(dateFromBlockchain.toString());
+          var localDate = moment(dateUtc).local();
+
+
+          let auxToReturn = {
+            id: dataId.toString(),
+            temperature: temperatureContent.toString(),
+            light: lightContent.toString(),
+            battery: battery.toString(),
+            sensorEvent: sensorEvent.toString(),
+            devId: devId,
+            date: localDate.toString()
+          };
+
+          toReturn.push(auxToReturn);
+        }
+
+        console.log("toReturnError = ", toReturn)
+        commit('setDataFromBlockchain', toReturn);
+        return toReturn;
+      }).then(function(result) {
+        //console.log("getInformationFromBlockchain = ", result.toString());
+        console.log("---final----")
+        commit('setLoading', 0);
+
+        return result;
+      }, function (error) {
+        console.log(error);
+        commit('setLoading', 0);
+        return error;
+      });
     }
-  }
+  },
 })
