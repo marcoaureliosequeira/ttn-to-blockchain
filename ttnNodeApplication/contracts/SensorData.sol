@@ -29,9 +29,9 @@ contract SensorData {
     );
 
     function createDataSensor (uint _temperature, uint _light, uint _battery, string memory _sensorEvent, string memory _devId, string memory _date) public {
-        bool validateValues = true;
+        bool validateValues = true; //VARIABLE TO CONTROL VALIDATIONS
 
-        if(dataId >= 1) {
+        if(dataId >= 1) { //VALIDATE RECORD ONLY IF ALREADY EXIST DATA SAVED
             //TEMPERATURE
             uint halfTemperatureSensorData = dataFromSensorArray[dataId].temperature/2;
             uint doubleTemperatureSensorData = dataFromSensorArray[dataId].temperature*2;
@@ -55,7 +55,7 @@ contract SensorData {
             }
         }
 
-        if(_battery > 0 && validateValues == true) {
+        if(_battery > 0 && validateValues == true) { //IF IS A VALID RECORD SAVE THIS ON CORRECT DATA ARRAY
             //DATA ID
             dataId ++;
 
@@ -64,7 +64,7 @@ contract SensorData {
 
             emit dataFromSensorCreated(dataId, _temperature, _light, _battery, _sensorEvent, _devId, _date);
         }
-        else {
+        else { //IF IS A ERROR, SAVE THIS RECORD ON ERROR'S ARRAY
             //DATA ID
             dataIdError ++;
 
