@@ -11,6 +11,7 @@
     <v-content>
       <vue-data-table></vue-data-table>
       <loading-component></loading-component>
+      <graphic-component></graphic-component>
     </v-content>
   </v-app>
 </template>
@@ -18,12 +19,14 @@
 <script>
 import VueDataTable from "./components/VueDataTable";
 import LoadingComponent from "./components/LoadingComponent";
+import GraphicComponent from "./components/GraphicComponent";
 
 export default {
   name: 'App',
   components: {
     VueDataTable,
-    LoadingComponent
+    LoadingComponent,
+    GraphicComponent
   },
   data: () => ({
     //
