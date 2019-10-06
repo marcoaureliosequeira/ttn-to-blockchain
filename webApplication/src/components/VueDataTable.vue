@@ -61,7 +61,6 @@
     },
     watch: {
       loading (newValue) {
-        console.log("newValue = ", newValue);
         if(newValue === 1) {
           this.$root.$emit('loaderOn')
         }
