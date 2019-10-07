@@ -1,5 +1,39 @@
 <template>
   <div class="container">
+      <template>
+          <v-card
+                  flat
+                  class="py-12"
+          >
+              <v-card-text>
+                  <v-row
+                          align="center"
+                          justify="center"
+                  >
+                      <v-col cols="12">
+                          <p class="text-center">Rounded</p>
+                      </v-col>
+                      <v-btn-toggle
+                              v-model="filterChart"
+                              rounded
+                      >
+                          <v-btn>
+                              General
+                          </v-btn>
+                          <v-btn>
+                              Battery
+                          </v-btn>
+                          <v-btn>
+                              Light
+                          </v-btn>
+                          <v-btn>
+                              Temperature
+                          </v-btn>
+                      </v-btn-toggle>
+                  </v-row>
+              </v-card-text>
+          </v-card>
+      </template>
       <GChart
           type="LineChart"
           :data="chartData"
@@ -23,10 +57,11 @@
               ],
               chartOptions: {
                   chart: {
-                      title: 'Company Performance',
-                      subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+                      //title: 'Company Performance',
+                      //subtitle: 'Sales, Expenses, and Profit: 2014-2017',
                   }
-              }
+              },
+              filterChart: 0
           }
       },
 
@@ -41,29 +76,69 @@
           ...mapState('store',['dataFromBlockchain']),
           dataFromBlockchain () {
               return this.$store.state.dataFromBlockchain;
-          }
+          },
+          /*filterChart () {
+              return this.filterChart;
+          }*/
       },
       watch: {
           dataFromBlockchain (newValue) {
-              let chartDataAux = [];
-              chartDataAux.push(['#Record', 'Battery', 'Light', 'Temperature']);
-
-              for(let i = 0; i < newValue.length; i++) {
-                  chartDataAux.push([parseInt(newValue[i]["id"]), parseInt(newValue[i]["battery"]), parseInt(newValue[i]["light"]), parseInt(newValue[i]["temperature"])]);
+              this.refreshChart(newValue);
+          },
+          filterChart (newValue) {
+              if(typeof(newValue) !== 'undefiend') {
+                  this.refreshChart(this.$store.state.dataFromBlockchain);
               }
-
-              this.chartData = chartDataAux;
-
-              console.log("chartDataAux = ", chartDataAux);
-
-              console.log("chartData = ", this.chartData);
           }
+
       },
       mounted() {
           //this.$store.dispatch("getBlockchainData");
       },
       methods: {
           ...mapActions(['getBlockchainData']),
+
+          refreshChart(newValue) {
+              //let filter = this.$store.state.filterChart;
+              let chartDataAux = [];
+              if(this.filterChart === 0) {
+                  chartDataAux.push(['#Record', 'Battery', 'Light', 'Temperature']);
+
+                  for(let i = 0; i < newValue.length; i++) {
+                      chartDataAux.push([new Date(newValue[i]["date"]), parseInt(newValue[i]["battery"]), parseInt(newValue[i]["light"]), parseInt(newValue[i]["temperature"])]);
+                  }
+              }
+
+              if(this.filterChart === 1) {
+                  chartDataAux.push(['#Record', 'Battery']);
+
+                  for(let i = 0; i < newValue.length; i++) {
+                      chartDataAux.push([new Date(newValue[i]["date"]), parseInt(newValue[i]["battery"])]);
+                  }
+              }
+
+              if(this.filterChart === 2) {
+                  chartDataAux.push(['#Record', 'Light']);
+
+                  for(let i = 0; i < newValue.length; i++) {
+                      chartDataAux.push([new Date(newValue[i]["date"]), parseInt(newValue[i]["light"])]);
+                  }
+              }
+
+              if(this.filterChart === 3) {
+                  chartDataAux.push(['#Record', 'Temperature']);
+
+                  for(let i = 0; i < newValue.length; i++) {
+                      chartDataAux.push([new Date(newValue[i]["date"]), parseInt(newValue[i]["temperature"])]);
+                  }
+              }
+
+              this.chartData = chartDataAux;
+
+//              console.log("chartDataAux = ", chartDataAux);
+
+  //            console.log("chartData = ", this.chartData);
+          }
       },
   }
 </script>

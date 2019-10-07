@@ -32,14 +32,17 @@ export const store = new Vuex.Store({
   state: {
     dataFromBlockchain: [],
     loading: false,
+    filterChart: 'generic',
   },
   mutations: {
     setDataFromBlockchain (state, payload) {
       state.dataFromBlockchain = payload
     },
     setLoading (state, payload) {
-      console.log("set LOADING = ", payload);
       state.loading = payload
+    },
+    setFilterChart (state, payload) {
+      state.filterChart = payload
     }
   },
 
@@ -47,6 +50,10 @@ export const store = new Vuex.Store({
     dataFromBlockchain: state => state.dataFromBlockchain,
     loading (state) {
       return state.loading
+    },
+
+    filterChart (state) {
+      return state.filterChart
     },
   },
 
