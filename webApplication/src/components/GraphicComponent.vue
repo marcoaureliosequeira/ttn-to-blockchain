@@ -10,9 +10,6 @@
                           align="center"
                           justify="center"
                   >
-                      <v-col cols="12">
-                          <p class="text-center">Rounded</p>
-                      </v-col>
                       <v-btn-toggle
                               v-model="filterChart"
                               rounded
@@ -45,6 +42,7 @@
 <script>
   import { mapActions, mapState } from 'vuex';
   //const moment = require('moment');
+  /* eslint-disable */
   let x = mapActions;
   let y = mapState;
   console.log(x,y);

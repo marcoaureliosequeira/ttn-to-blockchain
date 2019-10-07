@@ -31,7 +31,7 @@
 
 <script>
   import { mapActions, mapState } from 'vuex';
-
+  /* eslint-disable */
   export default {
     data() {
       return {
