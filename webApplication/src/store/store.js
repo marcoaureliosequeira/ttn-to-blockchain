@@ -28,6 +28,14 @@ var sensorDataAbi = require("/Users/marcosequeira/ttn-to-blockchain/ttnNodeAppli
 
 Vue.use(Vuex);
 
+/**function bin2String(array) {
+  var result = "";
+  for (var i = 0; i < array.length; i++) {
+    result += String.fromCharCode(parseInt(array[i], 2));
+  }
+  return result;
+}**/
+
 export const store = new Vuex.Store({
   state: {
     dataFromBlockchain: [],
@@ -120,9 +128,9 @@ export const store = new Vuex.Store({
 
       sensorDataContract.deployed().then(async function (instance) {
         let dataId = await instance.dataId();
-        let dataIdError = await instance.dataIdError();
-console.log("dataIdError = ", dataIdError);
-console.log("dataId = ", dataIdError);
+        //let dataIdError = await instance.dataIdError();
+//console.log("dataIdError = ", dataIdError);
+//console.log("dataId = ", dataIdError);
         var toReturn = [];
 
         // Fetch dataFromSensor on the blockchain
@@ -137,6 +145,8 @@ console.log("dataId = ", dataIdError);
           const sensorEvent = task[4]
           const devId = task[5]
           const dateFromBlockchain = task[6]
+          const queryResult = task[7]
+          const queryResult2= task[8]
 
           var dateUtc = moment.utc(dateFromBlockchain.toString());
           var localDate = moment(dateUtc).local();
@@ -149,7 +159,9 @@ console.log("dataId = ", dataIdError);
             battery: battery.toString(),
             sensorEvent: sensorEvent.toString(),
             devId: devId,
-            date: localDate.toString()
+            date: localDate.toString(),
+            queryResult: queryResult.toString(),
+            queryResult2: queryResult2.toString()
           };
 
           toReturn.push(auxToReturn);
@@ -225,6 +237,6 @@ console.log("dataId = ", dataIdError);
         commit('setLoading', 0);
         return error;
       });
-    }
+    },
   },
 })

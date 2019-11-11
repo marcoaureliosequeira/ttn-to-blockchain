@@ -10,6 +10,9 @@ const ttn = require('ttn');
 const moment = require('moment');
 const config = require('./config.js');
 
+const kelvinToCelsius = require('kelvin-to-celsius');
+const axios = require('axios');
+
 //TTN CONFIGURATIONS
 const appID = config.TTNOptions.appID;
 const accessKey = config.TTNOptions.accessKey;
@@ -75,10 +78,45 @@ function ttnClient () {
                 //DATE
                 let dataDate = payload.metadata.time;
 
-                console.log("temperature, light, battery, sensorEvent, devID, dataDate = ", temperature, light, battery, sensorEvent, devID, dataDate);
+                let lat = payload.payload_fields.lat;
 
-                //SEND DATA TO BLOCKCHAIN FUNCTION
+                let lng = payload.payload_fields.lng;
+
+//                console.log("temperature, light, battery, sensorEvent, devID, dataDate = ", temperature, light, battery, sensorEvent, devID, dataDate);
+
                 setInformationInBlockchain(temperature, light, battery, sensorEvent, devID, dataDate);
+
+                /**axios.get('http://samples.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lng +'&appid=b6907d289e10d714a6e88b30761fae22')
+                    .then(function (response) {
+                        let temp = kelvinToCelsius(response.data.main.temp);
+                        let tempMin = kelvinToCelsius(response.data.main.temp_min);
+                        let tempMax = kelvinToCelsius(response.data.main.temp_max);
+                        //let humidity = response.main.data.humidity;
+
+                        console.log("temp = ", temp);
+                        console.log("tempMin = ", tempMin);
+                        console.log("tempMax = ", tempMax);
+
+                        if(temperature >= (tempMin + tempMin*0.1) && temperature <= (tempMax + tempMax * 0.1)) {
+                            //SEND DATA TO BLOCKCHAIN FUNCTION
+                            setInformationInBlockchain(temperature, light, battery, sensorEvent, devID, dataDate);
+                        }
+                        else {
+                            console.log("not valid");
+                        }
+                    })
+                    .catch(function (error) {
+                        // handle error
+                        console.log("error = ", error);
+                    })
+                    .finally(function () {
+                        // always executed
+                    });**/
+
+                /**validateWeatherData(lat, lng, temperature).then(function (value) {
+                    isValid = value;
+                    console.log("isValid = ", isValid);
+                });**/
             })
         })
         .catch(function (error) {
@@ -141,11 +179,13 @@ async function getInformationFromBlockchain() {
 function setInformationInBlockchain (temperature, light, battery, sensorEvent, devId, dataDate) {
     console.log("init setInformationInBlockchain")
     sensorDataContract.deployed().then(function(instance){ //WHEN SMART CONTRACT IS DEPLOYED, CALL SMART CONTRACT'S METHOD
+        console.log("smart contract deployed")
         return instance.createDataSensor(temperature, light, battery, sensorEvent, devId, dataDate, {from: firstAccount});
+        //sleep(2000);
     }).then(function(result) {
-        console.log("setInformationInBlockchain");
+        console.log("setInformationInBlockchain - success");
     }, function (error) {
-        console.log(error);
+        console.log("setInformationInBlockchain error:", error);
     });
 }
 
@@ -161,6 +201,41 @@ function getDataFromSensorArray () {
     }, function (error) {
         console.log(error);
     });
+}
+
+async function validateWeatherData(lat, lng, temperature) {
+    console.log("receive = ");
+    console.log(temperature);
+
+    let temp = null;
+    let tempMin = null;
+    let tempMax = null;
+    let humidity = null;
+
+    axios.get('http://samples.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=b6907d289e10d714a6e88b30761fae22')
+        .then(function (response) {
+            console.log("response = ", response.data);
+
+            temp = kelvinToCelsius(response.data.main.temp);
+            tempMin = kelvinToCelsius(response.data.main.temp_min);
+            tempMax = kelvinToCelsius(response.data.main.temp_max);
+            humidity = response.main.data.humidity;
+
+            //TODO: 10% error
+            if(temperature >= tempMin && temperature <= tempMax) {
+                console.log("return true");
+                return true;
+            }
+            return false;
+        })
+        .catch(function (error) {
+            // handle error
+            return false;
+        })
+        .finally(function () {
+            // always executed
+        });
+
 }
 
 function getInfoFromDeployedSmartContract(){
@@ -183,6 +258,8 @@ function getInfoFromDeployedSmartContract(){
         console.error(error);
     });*/
 }
+
+
 
 
 
