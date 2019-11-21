@@ -6803,12 +6803,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x20E9a75e04556d2A1f1bafc42922984ef734EfB8",
-      "transactionHash": "0x632a24e7ea0a7ac84bd1fa17ce958208207fdc0810a592e029c42448fd8257b0"
+      "address": "0x6b3e2c43Cefe19095A33b115931D0f3570c94917",
+      "transactionHash": "0x17fc3c097d4d4c4f9e6ffc2a0af3892ca981b78fd5ce477eeee59cacb91486e3"
     }
   },
   "schemaVersion": "3.0.1",
-  "updatedAt": "2019-10-07T15:35:32.583Z",
+  "updatedAt": "2019-11-20T11:51:06.099Z",
   "devdoc": {
     "methods": {}
   },
