@@ -35,6 +35,8 @@ var web3Provider = null;
 
 var firstAccount;
 
+const gasAmt = 3e6
+
 /*****************/
 //SMART CONTRACT'S ABI - Application Binary Interface, is basically how you call functions in a contract and get data back
 var sensorDataAbi = require(__dirname+"/build/contracts/SensorData");
@@ -180,7 +182,23 @@ function setInformationInBlockchain (temperature, light, battery, sensorEvent, d
     console.log("init setInformationInBlockchain")
     sensorDataContract.deployed().then(function(instance){ //WHEN SMART CONTRACT IS DEPLOYED, CALL SMART CONTRACT'S METHOD
         console.log("smart contract deployed")
-        return instance.createDataSensor(temperature, light, battery, sensorEvent, devId, dataDate, {from: firstAccount});
+        return instance.update({
+            from: firstAccount,
+            gas: gasAmt
+        });
+        /*return instance.createDataSensor(
+            temperature,
+            light,
+            battery,
+            sensorEvent,
+            devId,
+            dataDate,
+            {
+                from: firstAccount,
+                gas: gasAmt
+            }
+        );*/
+        //return instance.createDataSensor(temperature, light, battery, sensorEvent, devId, dataDate, {from: firstAccount});
         //sleep(2000);
     }).then(function(result) {
         console.log("setInformationInBlockchain - success");

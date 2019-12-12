@@ -1,21 +1,16 @@
 // <provableAPI>
 /*
-
-
 Copyright (c) 2015-2016 Oraclize SRL
 Copyright (c) 2016-2019 Oraclize LTD
 Copyright (c) 2019 Provable Things Limited
-
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
-
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
-
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
@@ -23,13 +18,12 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-
 */
 pragma solidity >= 0.5.0 < 0.6.0; // Incompatible compiler version - please select a compiler within the stated pragma range, or use a different version of the provableAPI!
 
 // Dummy contract only used to emit to end-user they are using wrong solc
 contract solcChecker {
-/* INCOMPATIBLE SOLC: import the following instead: "github.com/oraclize/ethereum-api/oraclizeAPI_0.4.sol" */ function f(bytes calldata x) external;
+    /* INCOMPATIBLE SOLC: import the following instead: "github.com/oraclize/ethereum-api/oraclizeAPI_0.4.sol" */ function f(bytes calldata x) external;
 }
 
 contract ProvableI {
@@ -53,25 +47,18 @@ contract OracleAddrResolverI {
     function getAddress() public returns (address _address);
 }
 /*
-
 Begin solidity-cborutils
-
 https://github.com/smartcontractkit/solidity-cborutils
-
 MIT License
-
 Copyright (c) 2018 SmartContract ChainLink, Ltd.
-
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
-
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
-
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -79,7 +66,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
 */
 library Buffer {
 
@@ -266,9 +252,7 @@ library CBOR {
     }
 }
 /*
-
 End solidity-cborutils
-
 */
 contract usingProvable {
 
@@ -317,8 +301,8 @@ contract usingProvable {
     }
 
     function provable_setNetwork(uint8 _networkID) internal returns (bool _networkSet) {
-      _networkID; // NOTE: Silence the warning and remain backwards compatible
-      return provable_setNetwork();
+        _networkID; // NOTE: Silence the warning and remain backwards compatible
+        return provable_setNetwork();
     }
 
     function provable_setNetworkName(string memory _network_name) internal {
@@ -379,8 +363,8 @@ contract usingProvable {
     }
 
     function __callback(bytes32 _myid, string memory _result, bytes memory _proof) public {
-      _myid; _result; _proof;
-      provable_randomDS_args[bytes32(0)] = bytes32(0);
+        _myid; _result; _proof;
+        provable_randomDS_args[bytes32(0)] = bytes32(0);
     }
 
     function provable_getPrice(string memory _datasource) provableAPI internal returns (uint _queryPrice) {
@@ -418,7 +402,7 @@ contract usingProvable {
     function provable_query(string memory _datasource, string memory _arg, uint _gasLimit) provableAPI internal returns (bytes32 _id) {
         uint price = provable.getPrice(_datasource, _gasLimit);
         if (price > 1 ether + tx.gasprice * _gasLimit) {
-           return 0; // Unexpectedly high price
+            return 0; // Unexpectedly high price
         }
         return provable.query_withGasLimit.value(price)(0, _datasource, _arg, _gasLimit);
     }
@@ -996,7 +980,7 @@ contract usingProvable {
         for (uint i = 0; i < bresult.length; i++) {
             if ((uint(uint8(bresult[i])) >= 48) && (uint(uint8(bresult[i])) <= 57)) {
                 if (decimals) {
-                   if (_b == 0) break;
+                    if (_b == 0) break;
                     else _b--;
                 }
                 mint *= 10;
@@ -1025,11 +1009,11 @@ contract usingProvable {
         for (uint i = 0; i < bresult.length; i++) {
             if ((uint(uint8(bresult[i])) >= 48) && (uint(uint8(bresult[i])) <= 57)) {
                 if (decimals) {
-                   if (_b == 0) {
-                       break;
-                   } else {
-                       _b--;
-                   }
+                    if (_b == 0) {
+                        break;
+                    } else {
+                        _b--;
+                    }
                 }
                 mint *= 10;
                 mint += uint(uint8(bresult[i])) - 48;
@@ -1096,11 +1080,11 @@ contract usingProvable {
         bytes32 sessionKeyHash_bytes32 = provable_randomDS_getSessionPubKeyHash();
         assembly {
             mstore(unonce, 0x20)
-            /*
-             The following variables can be relaxed.
-             Check the relaxed random contract at https://github.com/oraclize/ethereum-examples
-             for an idea on how to override and replace commit hash variables.
-            */
+        /*
+         The following variables can be relaxed.
+         Check the relaxed random contract at https://github.com/oraclize/ethereum-examples
+         for an idea on how to override and replace commit hash variables.
+        */
             mstore(add(unonce, 0x20), xor(blockhash(sub(number, 1)), xor(coinbase, timestamp)))
             mstore(sessionKeyHash, 0x20)
             mstore(add(sessionKeyHash, 0x20), sessionKeyHash_bytes32)
@@ -1306,18 +1290,18 @@ contract usingProvable {
         assembly {
             r := mload(add(_sig, 32))
             s := mload(add(_sig, 64))
-            /*
-             Here we are loading the last 32 bytes. We exploit the fact that
-             'mload' will pad with zeroes if we overread.
-             There is no 'mload8' to do this, but that would be nicer.
-            */
+        /*
+         Here we are loading the last 32 bytes. We exploit the fact that
+         'mload' will pad with zeroes if we overread.
+         There is no 'mload8' to do this, but that would be nicer.
+        */
             v := byte(0, mload(add(_sig, 96)))
-            /*
-              Alternative solution:
-              'byte' is not working due to the Solidity parser, so lets
-              use the second best option, 'and'
-              v := and(mload(add(_sig, 65)), 255)
-            */
+        /*
+          Alternative solution:
+          'byte' is not working due to the Solidity parser, so lets
+          use the second best option, 'and'
+          v := and(mload(add(_sig, 65)), 255)
+        */
         }
         /*
          albeit non-transactional signatures are not specified by the YP, one would expect it

@@ -112,6 +112,7 @@ export const store = new Vuex.Store({
     },
     async setContracts () {
       console.log("start setContracts");
+console.log(sensorDataAbi);
 
       sensorDataContract = TruffleContract(sensorDataAbi) //get truffle contract; function from truffle package - node
       sensorDataContract.setProvider(web3Provider)
@@ -145,8 +146,6 @@ export const store = new Vuex.Store({
           const sensorEvent = task[4]
           const devId = task[5]
           const dateFromBlockchain = task[6]
-          const queryResult = task[7]
-          const queryResult2= task[8]
 
           var dateUtc = moment.utc(dateFromBlockchain.toString());
           var localDate = moment(dateUtc).local();
@@ -160,8 +159,6 @@ export const store = new Vuex.Store({
             sensorEvent: sensorEvent.toString(),
             devId: devId,
             date: localDate.toString(),
-            queryResult: queryResult.toString(),
-            queryResult2: queryResult2.toString()
           };
 
           toReturn.push(auxToReturn);
