@@ -35,21 +35,24 @@
   export default {
     data() {
       return {
-        columns: ['id', 'temperature', 'light', 'battery', 'sensorEvent', 'devId', 'date'],
+        columns: ['id', 'temperature', 'humidity', 'location', 'light', 'battery', 'sensorEvent', 'devId', 'date', 'logs'],
         tableData: [],
         loader: '',
         options: {
           headings: {
             id: 'Id',
             temperature: 'Temperature',
+            humidity: 'Humidity',
+            location: 'Location',
             light: 'Light',
             battery: 'Battery',
             sensorEvent: 'Sensor Event',
             devId: 'Device Id',
             date: 'Date',
+            logs: 'Logs',
           },
-          sortable: ['id', 'temperature', 'light', 'battery', 'sensorEvent', 'devId', 'date'],
-          filterable: ['id', 'temperature', 'light', 'battery', 'sensorEvent', 'devId', 'date'],
+          sortable: ['id', 'temperature', 'humidity', 'location', 'light', 'battery', 'sensorEvent', 'devId', 'date', 'logs'],
+          filterable: ['id', 'temperature', 'humidity', 'location', 'light', 'battery', 'sensorEvent', 'devId', 'date', 'logs'],
         }
       }
     },

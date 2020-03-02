@@ -22,7 +22,8 @@ const config = require('../../config.js');
 //const sensorDataLocation = config.blockchainOptions.sensorDataLocation;
 
 //var sensorDataAbi = require("111");
-var sensorDataAbi = require("/Users/marcosequeira/ttn-to-blockchain/ttnNodeApplication/build/contracts/SensorData.json");
+//var sensorDataAbi = require("/Users/marcosequeira/ttn-to-blockchain/ttnNodeApplication/build/contracts/SensorData.json");
+var sensorDataAbi = require("C:\\Users\\marco\\PersonalProjects\\ttn-to-blockchain\\ttnNodeApplication\\build\\contracts\\SensorData.json");
 //var sensorDataAbi = require(config.blockchainOptions.sensorDataLocation);
 
 
@@ -125,11 +126,14 @@ console.log("dataId = ", dataIdError);
           //const task = await instance.dataFromSensorErrorArray(i)
           const dataId = task[0]
           const temperatureContent = task[1]
-          const lightContent = task[2]
-          const battery = task[3]
-          const sensorEvent = task[4]
-          const devId = task[5]
-          const dateFromBlockchain = task[6]
+          const humidity = task[2]
+          const location = task[3]
+          const light = task[4]
+          const battery = task[5]
+          const sensorEvent = task[6]
+          const devId = task[7]
+          const dateFromBlockchain = task[8]
+          const logs = task[9]
 
           var dateUtc = moment.utc(dateFromBlockchain.toString());
           var localDate = moment(dateUtc).local();
@@ -138,11 +142,14 @@ console.log("dataId = ", dataIdError);
           let auxToReturn = {
             id: dataId.toString(),
             temperature: temperatureContent.toString(),
-            light: lightContent.toString(),
             battery: battery.toString(),
             sensorEvent: sensorEvent.toString(),
             devId: devId,
-            date: localDate.toString()
+            humidity: humidity.toString(),
+            location: location.toString(),
+            light: light.toString(),
+            dateContent: localDate.toString(),
+            logs: logs.toString(),
           };
 
           toReturn.push(auxToReturn);
@@ -169,39 +176,45 @@ console.log("dataId = ", dataIdError);
       console.log("\n \n");
 
       sensorDataContract.deployed().then(async function (instance) {
-        let dataId = await instance.dataIdError();
         let dataIdError = await instance.dataIdError();
         console.log("dataIdError = ", dataIdError);
         console.log("dataId = ", dataIdError);
         var toReturn = [];
 
         // Fetch dataFromSensor on the blockchain
-        for (var i = 1; i <= dataId; i++) {
-          //for (var i = 1; i <= dataIdError; i++) {
+        //for (var i = 1; i <= dataId; i++) {
+        for (var i = 1; i <= parseInt(dataIdError); i++) {
           const task = await instance.dataFromSensorErrorArray(i)
-          const dataId = task[0]
-          const temperatureContent = task[1]
-          const lightContent = task[2]
-          const battery = task[3]
-          const sensorEvent = task[4]
-          const devId = task[5]
-          const dateFromBlockchain = task[6]
+          console.log(1);
+            const dataId = task[0]
+            const temperatureContent = task[1]
+            const humidity = task[2]
+            const location = task[3]
+            const light = task[4]
+            const battery = task[5]
+            const sensorEvent = task[6]
+            const devId = task[7]
+            const dateFromBlockchain = task[8]
+            const logs = task[9]
+  
+            var dateUtc = moment.utc(dateFromBlockchain.toString());
+            var localDate = moment(dateUtc).local();
+  
+  
+            let auxToReturn = {
+              id: dataId.toString(),
+              temperature: temperatureContent.toString(),
+              battery: battery.toString(),
+              sensorEvent: sensorEvent.toString(),
+              devId: devId,
+              humidity: humidity.toString(),
+              location: location.toString(),
+              light: light.toString(),
+              dateContent: localDate.toString(),
+              logs: logs.toString(),
+            };
 
-          var dateUtc = moment.utc(dateFromBlockchain.toString());
-          var localDate = moment(dateUtc).local();
-
-
-          let auxToReturn = {
-            id: dataId.toString(),
-            temperature: temperatureContent.toString(),
-            light: lightContent.toString(),
-            battery: battery.toString(),
-            sensorEvent: sensorEvent.toString(),
-            devId: devId,
-            date: localDate.toString()
-          };
-
-          toReturn.push(auxToReturn);
+            toReturn.push(auxToReturn);
         }
 
         console.log("toReturnError = ", toReturn)
