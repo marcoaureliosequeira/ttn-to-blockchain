@@ -95,7 +95,7 @@ contract SensorData {
             //--------------
             bool humidityRangeTest = validateHumidityRange(_humidity);
 
-            if (humidityRangeTest == true) {
+            if (temperaturePersistenceTest == true && humidityRangeTest == true) {
                 //-------------
                 //--STEP TEST--
                 //-------------
@@ -128,7 +128,7 @@ contract SensorData {
 
 
             //if(temperaturePersistenceTest == true && humidityPersistenceTest == true) {
-            if(temperaturePersistenceTest == true) {
+            if(temperaturePersistenceTest == true && humidityRangeTest == true) {
                 //DATA ID
                 dataId ++;
 

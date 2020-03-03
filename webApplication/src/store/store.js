@@ -135,6 +135,8 @@ console.log("dataId = ", dataIdError);
           const dateFromBlockchain = task[8]
           const logs = task[9]
 
+          //console.log("dateFromBlockchain = ", dateFromBlockchain)
+
           var dateUtc = moment.utc(dateFromBlockchain.toString());
           var localDate = moment(dateUtc).local();
 
@@ -148,14 +150,13 @@ console.log("dataId = ", dataIdError);
             humidity: humidity.toString(),
             location: location.toString(),
             light: light.toString(),
-            dateContent: localDate.toString(),
+            date: dateFromBlockchain.toString(),
             logs: logs.toString(),
           };
 
           toReturn.push(auxToReturn);
         }
 
-        console.log("toReturn = ", toReturn)
         commit('setDataFromBlockchain', toReturn);
         return toReturn;
       }).then(function(result) {
@@ -210,9 +211,11 @@ console.log("dataId = ", dataIdError);
               humidity: humidity.toString(),
               location: location.toString(),
               light: light.toString(),
-              dateContent: localDate.toString(),
+              date: dateFromBlockchain.toString(),
               logs: logs.toString(),
             };
+
+            console.log("auxToReturn = ", auxToReturn);
 
             toReturn.push(auxToReturn);
         }
