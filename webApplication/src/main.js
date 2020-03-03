@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
+import VueGoogleCharts from 'vue-google-charts'
 import { store } from './store/store'
 import { ClientTable } from 'vue-tables-2';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
@@ -7,6 +8,8 @@ import vuetify from './plugins/vuetify';
 import Dialog from 'vue-dialog-loading'
 
 Vue.use(ClientTable);
+
+Vue.use(VueGoogleCharts);
 
 Vue.use(Dialog, {
   dialogBtnColor: '#0f0'

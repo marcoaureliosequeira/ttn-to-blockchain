@@ -31,7 +31,7 @@
 
 <script>
   import { mapActions, mapState } from 'vuex';
-
+  /* eslint-disable */
   export default {
     data() {
       return {
@@ -64,7 +64,6 @@
     },
     watch: {
       loading (newValue) {
-        console.log("newValue = ", newValue);
         if(newValue === 1) {
           this.$root.$emit('loaderOn')
         }

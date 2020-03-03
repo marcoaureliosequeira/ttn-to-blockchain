@@ -1371,9 +1371,8 @@
       "transactionHash": "0xafdd79769a6f77557ea14b0374e5e49edf33b740f80ec300876dd92b20e50ee1"
     }
   },
-  "schemaVersion": "3.0.23",
-  "updatedAt": "2020-03-03T22:10:12.118Z",
-  "networkType": "ethereum",
+  "schemaVersion": "3.0.1",
+  "updatedAt": "2019-09-22T21:23:14.664Z",
   "devdoc": {
     "methods": {}
   },
