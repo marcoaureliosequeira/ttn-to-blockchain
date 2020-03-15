@@ -5,13 +5,13 @@ contract SensorData {
     int public dataIdError = 0;
 
     //TEMPERATURE RANGE VARIABLES
-    int public temperatureLow = -30;
-    int public temperatureHigh = 50;
+    int public temperatureLow = -30000;
+    int public temperatureHigh = 50000;
 
     //HUMIDITY RANGE VARIABLES
     //int public humidityLow = 0.8;
-    int public humidityLow = -1;
-    int public humidityHigh = 103;
+    int public humidityLow = 800;
+    int public humidityHigh = 103000;
 
     struct dataFromSensor {
         int id;
@@ -200,7 +200,7 @@ contract SensorData {
 
     function validateHumidityStep(int _humidity) public returns (bool) {
         if (dataId > 1) {
-            if(dataFromSensorArray[dataId].humidity < 45) //TODO: THIS VALUE SHOULD BE SEMI HOURLY
+            if(dataFromSensorArray[dataId].humidity < 45000) //TODO: THIS VALUE SHOULD BE SEMI HOURLY
                 return true;
 
             else
@@ -259,9 +259,9 @@ contract SensorData {
             int temperatureAtTwelveHoursAgo = dataFromSensorArray[dataId-11].temperature;
 
             //TODO:MODULE CALCS
-            if((_temperature-temperatureAtLastHour) < 4 && (_temperature-temperatureAtTwoHoursAgo) < 7
-                && ((_temperature-temperatureAtThreeHoursAgo) < 9 || (_temperature-temperatureAtSixHoursAgo) < 15
-                || (_temperature-temperatureAtTwelveHoursAgo) < 25))
+            if((_temperature-temperatureAtLastHour) < 4000 && (_temperature-temperatureAtTwoHoursAgo) < 7000
+                && ((_temperature-temperatureAtThreeHoursAgo) < 9000 || (_temperature-temperatureAtSixHoursAgo) < 15000
+                || (_temperature-temperatureAtTwelveHoursAgo) < 25000))
             {
                 return true;
             }
@@ -329,7 +329,7 @@ contract SensorData {
         //T(d) != T(d-1) != T(d-2); - NOT USED, OUR DATA IS HOURLY
         //Tsh != Tsh-2 != Tsh-4 != Tsh-6 - ADAPTED TO HOURLY VALUES, BECAUSE DATA SET HAS ONLY HOURLY VALUES
 
-        if(dataId <= 3)
+        if(dataId <= 10)
             return true;
 
         if(_temperature != dataFromSensorArray[dataId - 1].temperature && _temperature != dataFromSensorArray[dataId - 2].temperature && _temperature != dataFromSensorArray[dataId - 3].temperature)
@@ -363,7 +363,7 @@ contract SensorData {
     }
 
     function getMinTemperatureDaily () public returns (int) {
-        int minTemperatureDaily = 10000;
+        int minTemperatureDaily = 1000000000;
 
         for(int i = 1; i <= 24; i++) {
             if(dataFromSensorArray[dataId - i].temperature < minTemperatureDaily)
@@ -374,7 +374,7 @@ contract SensorData {
     }
 
     function getMinTemperatureDayBefore () public returns (int) {
-        int minTemperatureDaily = 10000;
+        int minTemperatureDaily = 1000000000;
 
         for(int i = 24; i <= 48; i++) {
             if(dataFromSensorArray[dataId - i].temperature < minTemperatureDaily)
@@ -385,7 +385,7 @@ contract SensorData {
     }
 
     function getMaxTemperatureDayBefore () public returns (int) {
-        int maxTemperatureDaily = -10000;
+        int maxTemperatureDaily = -1000000000;
 
         for(int i = 24; i <= 48; i++) {
             if(dataFromSensorArray[dataId - i].temperature > maxTemperatureDaily)
@@ -396,7 +396,7 @@ contract SensorData {
     }
 
     function getMaxTemperature() public returns (int) {
-        int maxTemperatureDaily = -10000;
+        int maxTemperatureDaily = -1000000000;
 
         for(int i = 1; i <= dataId; i++) {
             if(dataFromSensorArray[i].temperature > maxTemperatureDaily)
@@ -407,7 +407,7 @@ contract SensorData {
     }
 
     function getMinTemperature () public returns (int) {
-        int minTemperatureDaily = 10000;
+        int minTemperatureDaily = 1000000000;
 
         for(int i = 1; i <= dataId; i++) {
             if(dataFromSensorArray[dataId].temperature < minTemperatureDaily)
@@ -418,7 +418,7 @@ contract SensorData {
     }
 
     function getMaxHumidity() public returns (int) {
-        int maxHumidity = -10000;
+        int maxHumidity = -1000000000;
 
         for(int i = 1; i <= dataId; i++) {
             if(dataFromSensorArray[i].humidity > maxHumidity)
@@ -429,7 +429,7 @@ contract SensorData {
     }
 
     function getMinHumidity () public returns (int) {
-        int minHumidity = 10000;
+        int minHumidity = 1000000000;
 
         for(int i = 1; i <= dataId; i++) {
             if(dataFromSensorArray[dataId].humidity < minHumidity)

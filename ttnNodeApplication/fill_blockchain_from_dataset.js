@@ -111,18 +111,31 @@ async function datasetToBlockchain () {
     let fileText = fs.readFileSync('../Datasets/Milan/'+locationName+'/'+locationName+'data_compiled.csv').toString();
     let dataFromCsv = CSVToArray(fileText, ";");
 
+    let devicesArray = {
+        'Brera': '0',
+        'FilippoJuvara': '1',
+        'Lambrate': '2',
+        'Marche': '3',
+        'Zavattari': '4',
+    }
+
     //for (let i = 0; i < 2; i++) {
     for (let i = 0; i < dataFromCsv.length; i++) {
+        let temperatureAux = dataFromCsv[i][2] * 1000;
+        let humidityAux = dataFromCsv[i][3] * 1000;
+
         let location = dataFromCsv[i][0];
         let dateTime = dataFromCsv[i][1];
-        let temperature = parseInt(dataFromCsv[i][2]);
-        let humidity = dataFromCsv[i][3];
+        let temperature = temperatureAux.toString();
+        let humidity = humidityAux.toString();
         let light = 100;
         let battery = 100;
-        let devId = "0";
+        let devId = devicesArray[locationName];
         let sensorEvent = "dataset";
 
         console.log(i)
+        console.log(temperature, humidity, location, light, battery, sensorEvent, devId, dateTime)
+
         await setInformationInBlockchain(temperature, humidity, location, light, battery, sensorEvent, devId, dateTime);
     }
 }
@@ -209,7 +222,7 @@ function CSVToArray( strData, strDelimiter ){
         // it to the data array.
         arrData[ arrData.length - 1 ].push( strMatchedValue );
     }
-
+console.log("arrData = ", arrData[0]);
     // Return the parsed data.
     return( arrData );
 }
