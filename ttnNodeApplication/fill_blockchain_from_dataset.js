@@ -106,9 +106,16 @@ function setInformationInBlockchain (temperature, humidity, location, light, bat
 
 //GET DATA FROM CSV AND STORE IN BLOCKCHAIN
 async function datasetToBlockchain () {
-    let locationName = 'Zavattari';
+
+    let fakeRandomData = false;
+    let fakeSlowTemperatureData = false;
+    let fakeSlowHumidityData = true;
+
+    //let locationName = 'Zavattari';
+    let locationName = 'falhas';
     console.log("[datasetToBlockchain] entrei")
-    let fileText = fs.readFileSync('../Datasets/Milan/'+locationName+'/'+locationName+'data_compiled.csv').toString();
+    //let fileText = fs.readFileSync('../Datasets/Milan/'+locationName+'/'+locationName+'data_compiled.csv').toString();
+    let fileText = fs.readFileSync('../Datasets/Falhas'+'/'+locationName+'_data_compiled.csv').toString();
     let dataFromCsv = CSVToArray(fileText, ";");
 
     let devicesArray = {
@@ -117,6 +124,7 @@ async function datasetToBlockchain () {
         'Lambrate': '2',
         'Marche': '3',
         'Zavattari': '4',
+        'falhas' : '5'
     }
 
     //for (let i = 0; i < 2; i++) {
@@ -137,6 +145,32 @@ async function datasetToBlockchain () {
         console.log(temperature, humidity, location, light, battery, sensorEvent, devId, dateTime)
 
         await setInformationInBlockchain(temperature, humidity, location, light, battery, sensorEvent, devId, dateTime);
+
+        if(i % 5 === 0) {
+            if(fakeRandomData) {
+                temperature = Math.floor(Math.random() * 100) * 1000;
+                humidity = Math.floor(Math.random() * 100) * 1000;
+                sensorEvent = 'Fake';
+            }
+
+            if(fakeSlowTemperatureData) {
+                temperature = temperature * 0.9;
+                //humidity = humidity * 0.9;
+                sensorEvent = 'Fake';
+            }
+
+            if(fakeSlowHumidityData) {
+                //temperature = temperature * 0.9;
+                humidity = humidity * 0.9;
+                sensorEvent = 'Fake';
+            }
+
+            //INSERT FAKE DATA
+            console.log("\n\nFAKE")
+            console.log(temperature, humidity, location, light, battery, sensorEvent, devId, dateTime)
+            await setInformationInBlockchain(temperature, humidity, location, light, battery, sensorEvent, devId, dateTime);
+        }
+        
     }
 }
 

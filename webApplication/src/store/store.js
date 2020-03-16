@@ -26,6 +26,7 @@ const config = require('../../config.js');
 var sensorDataAbi = require("C:\\Users\\marco\\PersonalProjects\\ttn-to-blockchain\\ttnNodeApplication\\build\\contracts\\SensorData.json");
 //var sensorDataAbi = require(config.blockchainOptions.sensorDataLocation);
 
+/* eslint-disable */
 
 Vue.use(Vuex);
 
