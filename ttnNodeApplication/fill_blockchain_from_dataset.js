@@ -107,9 +107,28 @@ function setInformationInBlockchain (temperature, humidity, location, light, bat
 //GET DATA FROM CSV AND STORE IN BLOCKCHAIN
 async function datasetToBlockchain () {
 
+    //FAKE DATA VARIABLE CONTROLLER
+    let fakeData = true;
+
+    //RANDOM FAKE DATA
     let fakeRandomData = false;
-    let fakeSlowTemperatureData = false;
-    let fakeSlowHumidityData = true;
+
+    //SUBTRACT 10% TO METEO DATA
+    let fakeDownSlowTemperatureData = false;
+    let fakeDownSlowHumidityData = false;
+    
+    //ADD 10% TO METEO DATA
+    let fakeUpSlowTemperatureData = false;
+    let fakeUpSlowHumidityData = false;
+
+
+    //SIMULATE ERROR AT SENSOR
+    let simulateSensorError = true;
+
+    //ITERATION TO START SIMULATION OF SENSOR ERROR
+    let iterationErrorToStart = 10;
+
+
 
     //let locationName = 'Zavattari';
     let locationName = 'falhas';
@@ -144,33 +163,59 @@ async function datasetToBlockchain () {
         console.log(i)
         console.log(temperature, humidity, location, light, battery, sensorEvent, devId, dateTime)
 
-        await setInformationInBlockchain(temperature, humidity, location, light, battery, sensorEvent, devId, dateTime);
-
-        if(i % 5 === 0) {
-            if(fakeRandomData) {
-                temperature = Math.floor(Math.random() * 100) * 1000;
-                humidity = Math.floor(Math.random() * 100) * 1000;
-                sensorEvent = 'Fake';
-            }
-
-            if(fakeSlowTemperatureData) {
-                temperature = temperature * 0.9;
-                //humidity = humidity * 0.9;
-                sensorEvent = 'Fake';
-            }
-
-            if(fakeSlowHumidityData) {
-                //temperature = temperature * 0.9;
-                humidity = humidity * 0.9;
-                sensorEvent = 'Fake';
-            }
-
-            //INSERT FAKE DATA
-            console.log("\n\nFAKE")
-            console.log(temperature, humidity, location, light, battery, sensorEvent, devId, dateTime)
+        //IF SIMULATE SENSOR ERROR NOT INSERT CORRECT RECORD
+        if(!simulateSensorError || (simulateSensorError && i <= iterationErrorToStart)) {
+            console.log("normal insert")
             await setInformationInBlockchain(temperature, humidity, location, light, battery, sensorEvent, devId, dateTime);
         }
-        
+
+        if(fakeData) {
+            sensorEvent = 'Fake';
+
+            let insertDataToBlockchain = false;
+//console.log(i + ', ' + iterationErrorToStart + ' => ' + (i >= iterationErrorToStart));
+            if(!simulateSensorError && i % 5 === 0) {
+                if(fakeRandomData) {
+                    temperature = Math.floor(Math.random() * 100) * 1000;
+                    humidity = Math.floor(Math.random() * 100) * 1000;
+                }
+    
+                if(fakeDownSlowTemperatureData) {
+                    temperatureAux = temperatureAux * 0.9;
+                }
+    
+                if(fakeDownSlowHumidityData) {
+                    humidityAux = humidityAux * 0.9;
+                }
+    
+                if(fakeUpSlowTemperatureData) {
+                    temperatureAux = temperatureAux * 1.1;
+                }
+    
+                if(fakeUpSlowHumidityData) {
+                    humidityAux = humidityAux * 1.1;
+                }
+
+                insertDataToBlockchain = true;
+            }
+            else if (i >= iterationErrorToStart) {
+                temperatureAux = temperatureAux * 1.1;
+                humidityAux = humidityAux * 1.1;
+
+                insertDataToBlockchain = true;
+            }
+
+
+            if(insertDataToBlockchain) {
+                temperature = parseInt(temperatureAux).toString();
+                humidity = parseInt(humidityAux).toString();
+
+                //INSERT FAKE DATA
+                console.log("\n\nFAKE")
+                console.log(temperature, humidity, location, light, battery, sensorEvent, devId, dateTime)
+                await setInformationInBlockchain(temperature, humidity, location, light, battery, sensorEvent, devId, dateTime);
+            }
+        }
     }
 }
 
