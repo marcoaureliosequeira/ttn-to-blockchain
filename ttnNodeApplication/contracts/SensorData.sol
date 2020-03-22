@@ -329,10 +329,10 @@ contract SensorData {
         //T(d) != T(d-1) != T(d-2); - NOT USED, OUR DATA IS HOURLY
         //Tsh != Tsh-2 != Tsh-4 != Tsh-6 - ADAPTED TO HOURLY VALUES, BECAUSE DATA SET HAS ONLY HOURLY VALUES
 
-        if(dataId <= 10)
+        if(dataId <= 4)
             return true;
 
-        if(_temperature != dataFromSensorArray[dataId - 1].temperature && _temperature != dataFromSensorArray[dataId - 2].temperature && _temperature != dataFromSensorArray[dataId - 3].temperature)
+        if((_temperature != dataFromSensorArray[dataId].temperature) && (dataFromSensorArray[dataId].temperature != dataFromSensorArray[dataId-1].temperature) && (dataFromSensorArray[dataId - 1].temperature != dataFromSensorArray[dataId - 2].temperature))
             return true;
 
         return false;

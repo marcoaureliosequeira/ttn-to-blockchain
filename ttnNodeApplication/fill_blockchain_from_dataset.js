@@ -132,6 +132,7 @@ async function datasetToBlockchain () {
 
     //let locationName = 'Zavattari';
     let locationName = 'falhas';
+
     console.log("[datasetToBlockchain] entrei")
     //let fileText = fs.readFileSync('../Datasets/Milan/'+locationName+'/'+locationName+'data_compiled.csv').toString();
     let fileText = fs.readFileSync('../Datasets/Falhas'+'/'+locationName+'_data_compiled.csv').toString();
@@ -163,21 +164,31 @@ async function datasetToBlockchain () {
         console.log(i)
         console.log(temperature, humidity, location, light, battery, sensorEvent, devId, dateTime)
 
-        //IF SIMULATE SENSOR ERROR NOT INSERT CORRECT RECORD
-        if(!simulateSensorError || (simulateSensorError && i <= iterationErrorToStart)) {
-            console.log("normal insert")
-            await setInformationInBlockchain(temperature, humidity, location, light, battery, sensorEvent, devId, dateTime);
-        }
+        
 
         if(fakeData) {
-            sensorEvent = 'Fake';
+            
+            //IF SIMULATE SENSOR ERROR NOT INSERT CORRECT RECORD
+            if(!simulateSensorError || (simulateSensorError && i <= iterationErrorToStart)) {
+                console.log("normal insert")
+                await setInformationInBlockchain(temperature, humidity, location, light, battery, sensorEvent, devId, dateTime);
+            }
 
             let insertDataToBlockchain = false;
-//console.log(i + ', ' + iterationErrorToStart + ' => ' + (i >= iterationErrorToStart));
+
             if(!simulateSensorError && i % 5 === 0) {
                 if(fakeRandomData) {
-                    temperature = Math.floor(Math.random() * 100) * 1000;
-                    humidity = Math.floor(Math.random() * 100) * 1000;
+                    var pos = 50,
+                        neg = 30,
+                        result;
+
+                    result = Math.floor(Math.random() * (pos + neg)) - neg;
+                    temperature = result < 0 ? result : result + 1;
+
+                    temperature = temperature * 1000;
+
+                    //temperature = Math.floor(Math.random() * 100) * 1000;
+                    humidity = Math.floor(Math.random() * 103) * 1000;
                 }
     
                 if(fakeDownSlowTemperatureData) {
@@ -209,12 +220,18 @@ async function datasetToBlockchain () {
             if(insertDataToBlockchain) {
                 temperature = parseInt(temperatureAux).toString();
                 humidity = parseInt(humidityAux).toString();
+                
+                sensorEvent = 'Fake';
 
                 //INSERT FAKE DATA
                 console.log("\n\nFAKE")
                 console.log(temperature, humidity, location, light, battery, sensorEvent, devId, dateTime)
                 await setInformationInBlockchain(temperature, humidity, location, light, battery, sensorEvent, devId, dateTime);
             }
+        } else {
+            console.log("NORMAL INSERT")
+            console.log(temperature, humidity, location, light, battery, sensorEvent, devId, dateTime)
+            await setInformationInBlockchain(temperature, humidity, location, light, battery, sensorEvent, devId, dateTime);
         }
     }
 }
@@ -296,12 +313,13 @@ function CSVToArray( strData, strDelimiter ){
 
         }
 
-
         // Now that we have our value string, let's add
         // it to the data array.
         arrData[ arrData.length - 1 ].push( strMatchedValue );
     }
-console.log("arrData = ", arrData[0]);
+
+    console.log("arrData = ", arrData[0]);
+
     // Return the parsed data.
     return( arrData );
 }
