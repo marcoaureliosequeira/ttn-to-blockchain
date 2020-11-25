@@ -20,6 +20,8 @@
   "dependencies": {
     "@types/jquery": "^3.3.31",
     "async-waterfall": "^0.1.5",
+    "cpu-percentage": "^1.0.3",
+    "cpu-stat": "^2.0.1",
     "datatables.net": "^1.10.19",
     "ganache-cli": "^6.6.0",
     "jquery": "^3.4.1",
@@ -27,6 +29,7 @@
     "mocha": "^6.2.0",
     "moment": "^2.23.0",
     "mysql": "^2.16.0",
+    "os-utils": "0.0.14",
     "popper.js": "^1.14.7",
     "sha3": "^2.1.1",
     "ttn": "^2.3.3",
@@ -41,7 +44,7 @@
     "chai-bignumber": "^2.0.2",
     "lite-server": "^2.3.0",
     "nodemon": "^1.17.3",
-    "truffle": "5.0.2",
+    "truffle": "^5.0.2",
     "truffle-contract": "^4.0.28"
   },
   "directories": {

@@ -1,5 +1,6 @@
 const blockchainOptions = {
-    host: "http://localhost:7545",
+    //host: "http://localhost:7545",
+    host: "http://192.168.1.98:8545",
 };
 
 const TTNOptions = {

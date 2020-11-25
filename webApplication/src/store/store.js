@@ -3,7 +3,8 @@ import Vuex from 'vuex'
 //import {getTtnInfo} from '../../src/getTtnInfo'
 const moment = require('moment');
 
-const hostProvider = 'http://localhost:7545';
+//const hostProvider = 'http://localhost:7545';
+const hostProvider = "http://192.168.1.98:8545";
 
 var sensorDataContract = null;
 
@@ -62,7 +63,7 @@ export const store = new Vuex.Store({
 
   actions: {
     getBlockchainData({ dispatch, commit}) {
-      commit('setLoading', 1);
+      //commit('setLoading', 1);
 
       dispatch('initweb3').then (function () {
         dispatch('setContracts').then(function(){
@@ -74,7 +75,7 @@ export const store = new Vuex.Store({
     },
 
     getBlockchainDataError({ dispatch, commit}) {
-      commit('setLoading', 1);
+      //commit('setLoading', 1);
 
       dispatch('initweb3').then (function () {
         dispatch('setContracts').then(function(){
@@ -120,6 +121,8 @@ export const store = new Vuex.Store({
       console.log("---getInformationFromBlockchain222---");
       console.log("\n \n");
 
+      commit('setDataFromBlockchain', []);
+
       sensorDataContract.deployed().then(async function (instance) {
         let dataId = await instance.dataId();
         let dataIdError = await instance.dataIdError();
@@ -163,9 +166,10 @@ console.log("dataId = ", dataIdError);
           };
 
           toReturn.push(auxToReturn);
-        }
 
-        commit('setDataFromBlockchain', toReturn);
+          commit('setDataFromBlockchain', toReturn);
+        }
+        
         return toReturn;
       }).then(function(result) {
         //console.log("getInformationFromBlockchain = ", result.toString());
@@ -183,6 +187,8 @@ console.log("dataId = ", dataIdError);
     async getInformationErrorFromBlockchain({commit}) {
       console.log("---getInformationFromBlockchain222---");
       console.log("\n \n");
+
+      commit('setDataFromBlockchain', []);
 
       sensorDataContract.deployed().then(async function (instance) {
         let dataIdError = await instance.dataIdError();
@@ -222,14 +228,12 @@ console.log("dataId = ", dataIdError);
               date: dateFromBlockchain.toString(),
               logs: logs.toString(),
             };
-
-            console.log("auxToReturn = ", auxToReturn);
-
+            
             toReturn.push(auxToReturn);
-        }
 
-        console.log("toReturnError = ", toReturn)
-        commit('setDataFromBlockchain', toReturn);
+            commit('setDataFromBlockchain', toReturn);
+        }
+        
         return toReturn;
       }).then(function(result) {
         //console.log("getInformationFromBlockchain = ", result.toString());

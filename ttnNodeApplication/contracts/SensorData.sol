@@ -51,7 +51,7 @@ contract SensorData {
         bool humidityPersistenceTest =false;
         string memory auxLog;
 
-        //VALIDATE RECORD ONLY IF ALREADY EXIST DATA SAVED
+        //VALIDATE RECORD ONLY IF ALREADY EXISTS DATA SAVED
         //if(dataId >= 1 && _battery > 0) {
         if(true) {
             //--------------
@@ -77,6 +77,10 @@ contract SensorData {
                         //-----------------------------
 
                         temperaturePersistenceTest = validateTemperaturePersistenceTest(_temperature);
+
+                        if(temperaturePersistenceTest == false) {
+                            auxLog = "temperaturePersistenceTest";
+                        }
                     }
                     else {
                         auxLog = "temperatureInternalConsistencyTest";
@@ -122,7 +126,7 @@ contract SensorData {
                     auxLog = "humidityStepTest";
                 }
             }
-            else {
+            else if (temperaturePersistenceTest == true) {
                 auxLog = "humidityRangeTest";
             }
 
@@ -142,10 +146,13 @@ contract SensorData {
                 //DATA ID
                 dataIdError ++;
 
-                //add a instance of dataFromSensor to dataFromSensorArray
-                dataFromSensorErrorArray[dataIdError] = dataFromSensor(dataId, _temperature, _humidity, _location, _light, _battery, _sensorEvent, _devId, _date, "temperature persistence test");
+                if(temperaturePersistenceTest == true)
+                    auxLog = "humidityRangeTest";
 
-                emit dataFromSensorCreated(dataId, _temperature, _humidity, _location, _light, _battery, _sensorEvent, _devId, _date, "temperature persistence test");
+                //add a instance of dataFromSensor to dataFromSensorArray
+                dataFromSensorErrorArray[dataIdError] = dataFromSensor(dataId, _temperature, _humidity, _location, _light, _battery, _sensorEvent, _devId, _date, auxLog);
+
+                emit dataFromSensorCreated(dataId, _temperature, _humidity, _location, _light, _battery, _sensorEvent, _devId, _date, auxLog);
             }
         }
 
@@ -199,8 +206,20 @@ contract SensorData {
     }
 
     function validateHumidityStep(int _humidity) public returns (bool) {
+
         if (dataId > 1) {
-            if(dataFromSensorArray[dataId].humidity < 45000) //TODO: THIS VALUE SHOULD BE SEMI HOURLY
+            int differenceBetweenValues;
+
+            if(_humidity >= dataFromSensorArray[dataId].humidity)
+                differenceBetweenValues = _humidity - dataFromSensorArray[dataId].humidity;
+
+            else
+                differenceBetweenValues = dataFromSensorArray[dataId].humidity - _humidity;
+
+            //TODO: THIS VALUE SHOULD BE SEMI HOURLY
+            //SEMI HOURLY DIFFERENCE < 45000
+            //TODO: READ ARTICLE
+            if(differenceBetweenValues < 90000) 
                 return true;
 
             else
@@ -211,11 +230,21 @@ contract SensorData {
     }
 
     function validateHumidityInternalConsistencyTest (int _humidity) public returns (bool) {
+        //RHx - Daily Maximum Relative Humidity
+        //RHn - Daily Minimum Relative Humidity
+        //RHm - Daily Mean Relative Humidity
+
         //RHx > RHm > RHn
 
-        //RHx > max (RHsh);
+        //RHx > max (RHsh)
         //RHn < min (RHsh)
 
+        if(dataId >= 24) {
+            if(getMaxHumidityDaily() > _humidity && getMinHumidityDaily() < _humidity)
+                return true;
+            else
+                return false;
+        }
 
         return true;
     }
@@ -252,16 +281,76 @@ contract SensorData {
     function validateTemperatureStep (int _temperature) public returns (bool) {
         //IN ALGORITHM IS CONSIDERED SEMI HOURLY VALUES, BUT IS IN SETS OF TWO (IT MEANS HOURLY LIKE OUR DATASET)
         if(dataId >= 12) {
+            //TODO:SELECT ONLY DATA OF THIS LOCATION!!
             int temperatureAtLastHour = dataFromSensorArray[dataId].temperature;
             int temperatureAtTwoHoursAgo = dataFromSensorArray[dataId-1].temperature;
             int temperatureAtThreeHoursAgo = dataFromSensorArray[dataId-2].temperature;
             int temperatureAtSixHoursAgo = dataFromSensorArray[dataId-5].temperature;
             int temperatureAtTwelveHoursAgo = dataFromSensorArray[dataId-11].temperature;
 
+        
+            int differenceLastHour;
+            int differenceLastTwoHour;
+            int differenceLastThreeHour;
+            int differenceLastSixHour;
+            int differenceLastTwelveHour;
+
+
+            if(_temperature >= temperatureAtLastHour) {
+                differenceLastHour = _temperature - temperatureAtLastHour;
+            } else {
+                differenceLastHour = temperatureAtLastHour - _temperature;
+            }
+
+            if(_temperature >= temperatureAtTwoHoursAgo) {
+                differenceLastTwoHour = _temperature - temperatureAtTwoHoursAgo;
+            } else {
+                differenceLastTwoHour = temperatureAtTwoHoursAgo - _temperature;
+            }
+
+            if(_temperature >= temperatureAtThreeHoursAgo) {
+                differenceLastThreeHour = _temperature - differenceLastThreeHour;
+            } else {
+                differenceLastThreeHour = differenceLastThreeHour - _temperature;
+            }
+
+            if(_temperature >= temperatureAtSixHoursAgo) {
+                differenceLastSixHour = _temperature - temperatureAtSixHoursAgo;
+            } else {
+                differenceLastSixHour = temperatureAtSixHoursAgo - _temperature;
+            }
+
+            if(_temperature >= temperatureAtTwelveHoursAgo) {
+                differenceLastTwelveHour = _temperature - temperatureAtTwelveHoursAgo;
+            } else {
+                differenceLastTwelveHour = temperatureAtTwelveHoursAgo - _temperature;
+            }
+
+
+
+            /**if (differenceLastHour < 0) {
+                differenceLastHour = differenceLastHour * -1;
+            }
+
+            if (differenceLastTwoHour < 0) {
+                differenceLastTwoHour = differenceLastTwoHour * -1;
+            }
+
+            if (differenceLastThreeHour < 0) {
+                differenceLastThreeHour = differenceLastThreeHour * -1;
+            }
+
+            if (differenceLastSixHour < 0) {
+                differenceLastSixHour = differenceLastSixHour * -1;
+            }
+
+            if (differenceLastTwelveHour < 0) {
+                differenceLastTwelveHour = differenceLastTwelveHour * -1;
+            }**/
+
             //TODO:MODULE CALCS
-            if((_temperature-temperatureAtLastHour) < 4000 && (_temperature-temperatureAtTwoHoursAgo) < 7000
-                && ((_temperature-temperatureAtThreeHoursAgo) < 9000 || (_temperature-temperatureAtSixHoursAgo) < 15000
-                || (_temperature-temperatureAtTwelveHoursAgo) < 25000))
+            if(differenceLastHour < 4000 && differenceLastTwoHour < 7000 && (differenceLastThreeHour < 9000 || differenceLastSixHour < 15000
+                || differenceLastTwelveHour < 25000))
             {
                 return true;
             }
@@ -303,14 +392,19 @@ contract SensorData {
                 if(maxTemperatureDaily > minTemperatureDayBefore && minTemperatureDaily <= maxTemperatureDayBefore)
                     secondVerification = true;
 
+                secondVerification = true;
+
                 if(secondVerification == true) {
+
+                    //TODO: VERIFY
+
                     //THIRD VERIFICATION
                     //Tx > max(Tsh) - ADAPTED TO HOURLY VALUES, BECAUSE DATA SET HAS ONLY HOURLY VALUES
                     //Tn < min(Tsh) - ADAPTED TO HOURLY VALUES, BECAUSE DATA SET HAS ONLY HOURLY VALUES
                     int minTemperature = getMinTemperature();
                     int maxTemperature = getMaxTemperature();
 
-                    if(maxTemperatureDaily > _temperature && minTemperatureDaily < _temperature)
+                    //if(maxTemperature > _temperature && minTemperature < _temperature)
                         thirdVerification = true;
                 }
             }
@@ -329,10 +423,9 @@ contract SensorData {
         //T(d) != T(d-1) != T(d-2); - NOT USED, OUR DATA IS HOURLY
         //Tsh != Tsh-2 != Tsh-4 != Tsh-6 - ADAPTED TO HOURLY VALUES, BECAUSE DATA SET HAS ONLY HOURLY VALUES
 
-        if(dataId <= 4)
+        if (dataId < 4) {
             return true;
-
-        if((_temperature != dataFromSensorArray[dataId].temperature) && (dataFromSensorArray[dataId].temperature != dataFromSensorArray[dataId-1].temperature) && (dataFromSensorArray[dataId - 1].temperature != dataFromSensorArray[dataId - 2].temperature))
+        } else if((_temperature != dataFromSensorArray[dataId].temperature) || (_temperature != dataFromSensorArray[dataId-1].temperature) || (_temperature != dataFromSensorArray[dataId - 2].temperature))
             return true;
 
         return false;
@@ -439,6 +532,28 @@ contract SensorData {
         return minHumidity;
     }
 
+
+    function getMaxHumidityDaily () public returns (int) {
+        int maxHumidityDaily = -10000;
+
+        for(int i = 1; i <= 24; i++) {
+            if(dataFromSensorArray[dataId - i].humidity > maxHumidityDaily)
+                maxHumidityDaily = dataFromSensorArray[dataId - i].humidity;
+        }
+
+        return maxHumidityDaily;
+    }
+
+    function getMinHumidityDaily () public returns (int) {
+        int minHumidityDaily = 1000000000;
+
+        for(int i = 1; i <= 24; i++) {
+            if(dataFromSensorArray[dataId - i].humidity < minHumidityDaily)
+                minHumidityDaily = dataFromSensorArray[dataId - i].humidity;
+        }
+
+        return minHumidityDaily;
+    }
 
 
     //#################################
