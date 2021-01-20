@@ -4,7 +4,7 @@ import Vuex from 'vuex'
 const moment = require('moment');
 
 //const hostProvider = 'http://localhost:7545';
-const hostProvider = "http://192.168.1.98:8545";
+const hostProvider = "http://10.204.128.208:8545";
 
 var sensorDataContract = null;
 
@@ -89,17 +89,19 @@ export const store = new Vuex.Store({
     async initweb3() {
       try {
         //To make sure not to overwrite the already set provider when in mist, check first if the web3 is available
-        if (typeof web3 !== 'undefined') {
-          web3Provider = web3.currentProvider;
-          console.log("webProvider = ", web3Provider);
-
-          web3 = await new Web3(web3.currentProvider);
-          console.log("inside if");
-        } else {
-          // create an instance of web3 using the HTTP provider
-          web3 = await new Web3(new Web3.providers.HttpProvider(config.blockchainOptions.network));
-          console.log("inside else");
-        }
+        // if (typeof web3 !== 'undefined') {
+        //     web3Provider = web3.currentProvider;
+        //     console.log("webProvider = ", web3Provider);
+        //
+        //     web3 = await new Web3(web3.currentProvider);
+        //     console.log("inside if");
+        // } else {
+        // create an instance of web3 using the HTTP provider
+        web3 = await new Web3(new Web3.providers.HttpProvider("http://10.204.128.208:8000"));
+        web3Provider = web3.currentProvider;
+        console.log("inside else");
+        console.log("web3 = ", web3)
+        // }
       }
       catch(err) {
         console.log(err);
@@ -110,6 +112,9 @@ export const store = new Vuex.Store({
 
       sensorDataContract = TruffleContract(sensorDataAbi) //get truffle contract; function from truffle package - node
       sensorDataContract.setProvider(web3Provider)
+
+      console.log('setContracts 2')
+      console.log(web3.eth)
 
       firstAccount = web3.eth.accounts[0];
 

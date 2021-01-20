@@ -48,9 +48,10 @@ var sensorDataAbi = require(__dirname+"/build/contracts/SensorData");
 
 initweb3().then (function (result) { //INIT WEB3
     setContracts().then(function(result){ //WHEN INITIALIZED WEB3, SET CONTRACTS
-        datasetToBlockchain().then(function(){
-            return;
-        }); //WHEN ALL DATA IS PREPARED, LISTENING DATA FROM TTN SENSOR
+        setInterval(() => {
+            setInformationInBlockchain("324", 2, 2, "2", 2, 2, "2", "2", "23")
+                .then((data) => { console.log("done"); });
+        }, 500);
     });
 });
 
@@ -70,11 +71,11 @@ async function initweb3() {
         //     web3 = await new Web3(web3.currentProvider);
         //     console.log("inside if");
         // } else {
-            // create an instance of web3 using the HTTP provider
-            web3 = await new Web3(new Web3.providers.HttpProvider("http://10.204.128.208:8000"));
-            web3Provider = web3.currentProvider;
-            console.log("inside else");
-            console.log("web3 = ", web3)
+        // create an instance of web3 using the HTTP provider
+        web3 = await new Web3(new Web3.providers.HttpProvider("http://10.204.128.208:8000"));
+        web3Provider = web3.currentProvider;
+        console.log("inside else");
+        console.log("web3 = ", web3)
         // }
     }
     catch(err) {
@@ -102,6 +103,7 @@ async function setContracts () {
 
 //SEND DATA TO BLOCKCHAIN
 function setInformationInBlockchain (time, temperature, humidity, location, light, battery, sensorEvent, devId, dataDate) {
+    console.log("setInformationInBlockchain init");
     return sensorDataContract.deployed().then(function(instance){ //WHEN SMART CONTRACT IS DEPLOYED, CALL SMART CONTRACT'S METHOD
         return instance.createDataSensor(temperature, humidity, location, light, battery, sensorEvent, devId, dataDate, "", {from: firstAccount});
     }).then(function(result) {
@@ -143,7 +145,7 @@ async function datasetToBlockchain () {
     let fakeDownSlowTemperatureData = false;
     let percentageHumidityDown = 0.1;
     let fakeDownSlowHumidityData = false;
-    
+
     //ADD 10% TO METEO DATA
     let percentageTemperatureUp = 0.9;
     let fakeUpSlowTemperatureData = false;
@@ -167,27 +169,27 @@ async function datasetToBlockchain () {
 
     let minHumidityValue = false;
     //let minHumidityValue = 0.8*1000;
-    
+
 
     let maxTemperatureValue = false;
     //let maxTemperatureValue = 50*1000;
-    
+
 
     let maxHumidityValue = false;
     //let maxHumidityValue = 103*1000;
-    
+
 
     let scaleTemperatureValue = false;
     //let scaleTemperatureValue = 1.5;
-    
+
 
     let scaleHumidityValue = false;
     //let scaleHumidityValue = 1.01;
-    
+
 
     let offsetTemperatureValue = false;
     //let offsetTemperatureValue = 5 * 1000;
-    
+
 
     let offsetHumidityValue = false;
     //let offsetHumidityValue = 1 * 1000;
@@ -221,12 +223,12 @@ async function datasetToBlockchain () {
     }
 
     for (let i = 0; i < 10; i++) {
-    //for (let i = 0; i < dataFromCsv.length; i++) {
+        //for (let i = 0; i < dataFromCsv.length; i++) {
         const t0 = performance.now();
 
         console.log("---INDEX---")
         console.log("-- " + i + " -- \n")
-        
+
         let temperatureAux = dataFromCsv[i][2] * 1000;
         let humidityAux = dataFromCsv[i][3] * 1000;
 
@@ -243,7 +245,7 @@ async function datasetToBlockchain () {
         console.log(i)
         console.log(temperature, humidity, location, light, battery, sensorEvent, devId, dateTime)
 
-        
+
 
         if(fakeData === true) {
             console.log("fakeData = true");
@@ -252,7 +254,7 @@ async function datasetToBlockchain () {
                 && scaleTemperatureValue === false && scaleHumidityValue === false && offsetTemperatureValue === false && offsetHumidityValue === false) {
 
                 console.log("fake3 = ", simulateSensorError, i, iterationErrorToStart, !simulateSensorError || (simulateSensorError && i <= iterationErrorToStart));
-            
+
                 //IF SIMULATE SENSOR ERROR NOT INSERT CORRECT RECORD
                 if(!simulateSensorError || (simulateSensorError && i <= iterationErrorToStart)) {
                     console.log("normal insert")
@@ -276,19 +278,19 @@ async function datasetToBlockchain () {
                         //temperature = Math.floor(Math.random() * 100) * 1000;
                         humidity = Math.floor(Math.random() * 103) * 1000;
                     }
-        
+
                     if(fakeDownSlowTemperatureData === true) {
                         temperatureAux = temperatureAux * (1 - percentageTemperatureDown);
                     }
-        
+
                     if(fakeDownSlowHumidityData === true) {
                         humidityAux = humidityAux * (1 - percentageHumidityDown);
                     }
-        
+
                     if(fakeUpSlowTemperatureData === true) {
                         temperatureAux = temperatureAux * (1 + percentageTemperatureUp);
                     }
-        
+
                     if(fakeUpSlowHumidityData === true) {
                         humidityAux = humidityAux * (1 + percentageHumidityUp);
                     }
@@ -307,7 +309,7 @@ async function datasetToBlockchain () {
                 if(insertDataToBlockchain === true) {
                     temperature = parseInt(temperatureAux).toString();
                     humidity = parseInt(humidityAux).toString();
-                    
+
                     sensorEvent = 'Fake';
 
                     //INSERT FAKE DATA
@@ -325,7 +327,7 @@ async function datasetToBlockchain () {
 
                 if(insertedRandomValue === false && i >= iterationsWithoutFailures) {
                     let randomInsert = Math.random() >= 0.5;
-                    
+
                     //PERMANENTLY INSERT ALWAYS FAKE
                     if(randomInsert === true || permanentlyFakeData === true) {
                         insertedRandomValue = true;
