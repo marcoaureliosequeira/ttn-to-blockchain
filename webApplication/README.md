@@ -1,4 +1,4 @@
-# hello-world-vuex
+# Web Application
 
 ## Project setup
 ```
